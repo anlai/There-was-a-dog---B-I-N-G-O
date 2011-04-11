@@ -4,6 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Bingo.Web.Controllers;
+using Bingo.Web.Models;
+using Castle.Windsor;
+using Microsoft.Practices.ServiceLocation;
+using UCDArch.Data.NHibernate;
+using UCDArch.Web.IoC;
+using UCDArch.Web.ModelBinder;
 
 namespace Bingo.Web
 {
@@ -35,6 +42,32 @@ namespace Bingo.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+#if DEBUG
+            HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
+#endif
+
+            ModelBinders.Binders.DefaultBinder = new UCDArchModelBinder();
+
+            //AutomapperConfig.Configure();
+
+            NHibernateSessionConfiguration.Mappings.UseFluentMappings(typeof(Class1).Assembly);
+
+            IWindsorContainer container = InitializeServiceLocator();
+        }
+
+        private static IWindsorContainer InitializeServiceLocator()
+        {
+            IWindsorContainer container = new WindsorContainer();
+
+            ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container));
+
+            container.RegisterControllers(typeof(HomeController).Assembly);
+            ComponentRegistrar.AddComponentsTo(container);
+
+            ServiceLocator.SetLocatorProvider(() => new WindsorServiceLocator(container));
+
+            return container;
         }
     }
 }

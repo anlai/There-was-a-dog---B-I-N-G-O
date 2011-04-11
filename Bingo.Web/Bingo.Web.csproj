@@ -33,11 +33,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Castle.Windsor, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
     <Reference Include="DataAnnotationsExtensions">
       <HintPath>..\packages\DataAnnotationsExtensions.0.4.0.0\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
     </Reference>
     <Reference Include="DataAnnotationsExtensions.ClientValidation">
       <HintPath>..\packages\DataAnnotationsExtensions.MVC3.0.5.0.0\lib\NETFramework40\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\Bin\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender">
+      <HintPath>..\Bin\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="NHibernate.ByteCode.Spring">
+      <HintPath>..\Bin\NHibernate.ByteCode.Spring.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages" />
@@ -61,15 +73,22 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="UCDArch">
+      <HintPath>..\Bin\UCDArch.dll</HintPath>
+    </Reference>
     <Reference Include="WebActivator">
       <HintPath>..\packages\WebActivator.1.1.0.0\lib\NETFramework40\WebActivator.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="Controllers\ApplicationController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="ComponentRegistrar.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -143,12 +162,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -156,7 +171,7 @@
     <Content Include="Views\Shared\_NavigationExample.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_LayoutExample.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Sample.cshtml" />
@@ -183,6 +198,7 @@
     <None Include="CodeTemplates\AddView\CSHTML\List.tt" />
     <None Include="CodeTemplates\AddView\CSHTML\ListDatatables.tt" />
     <None Include="CodeTemplates\AddView\CSHTML\ListTelerik.tt" />
+    <Content Include="Views\Shared\_Navigation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
