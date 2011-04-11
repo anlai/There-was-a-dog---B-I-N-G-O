@@ -1,0 +1,41 @@
+﻿		
+.main { width: 1000px;}
+			
+#card_container{		
+	float: left;
+	width: 600px;
+	height: 500px;
+	border: 1px solid black;
+				
+	text-align: center;
+}
+#bingo_container{
+	float: left;
+	width: 350px;
+	height: 450px;
+	margin-left: 20px;
+}
+#bingo_call_container{
+	float: left;
+	width: 350px;
+	height: 50px;
+	margin-left: 20px;
+}
+#scoreboard_container{
+	width: 100%;
+	float: left;
+	height: 100px;
+	border: 1px solid black;
+	margin-top: 1em;
+}
+			
+table.card { 
+	margin: auto;			
+	margin-top: 1em;
+	border: 1px solid black;
+}
+			
+table.card tr { font-size:40px; padding: 1em; }
+table.card tr :hover { background-color: orange;}
+			
+table.card td { border: 1px solid black; }
