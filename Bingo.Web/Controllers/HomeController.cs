@@ -7,6 +7,11 @@ namespace Bingo.Web.Controllers
     /// </summary>
     public class HomeController : ApplicationController
     {
+        public ViewResult Index()
+        {
+            return View();
+        }
+
         public ViewResult Sample()
         {
             return View();
