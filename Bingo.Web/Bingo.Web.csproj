@@ -82,7 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="ComponentRegistrar.cs" />
     <Compile Include="Global.asax.cs">
@@ -133,6 +135,9 @@
     <Content Include="Images\logo-ucdavis.png" />
     <Content Include="Images\top_blue_bar.jpg" />
     <Content Include="robots.txt" />
+    <Content Include="Scripts\bingo_balls.js" />
+    <Content Include="Scripts\box2d.js" />
+    <Content Include="Scripts\protoclass.js" />
     <Content Include="UCDArch.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -199,6 +204,9 @@
     <None Include="CodeTemplates\AddView\CSHTML\ListDatatables.tt" />
     <None Include="CodeTemplates\AddView\CSHTML\ListTelerik.tt" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Client\Game.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
