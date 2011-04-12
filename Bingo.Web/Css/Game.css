@@ -10,7 +10,22 @@
 {
     padding: 1em;
     font-size: 25px;
+    cursor: pointer;
 }
+
+.bingo_cell:hover
+{
+    -moz-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    background-color: Orange;
+    cursor: pointer;
+}
+
+.selected
+{
+    background-color: Green;
+}
+
 .bingo_header
 {
     font-size: 25px;

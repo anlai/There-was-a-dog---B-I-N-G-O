@@ -10,7 +10,18 @@
     <script src='@Url.Script("bingo_balls.js")'></script>
 
     <script type="text/javascript">
-        $(function () { $("#btn_CallBingo").button(); });
+        $(function () {
+            // set the call bingo button style
+            $("#btn_CallBingo").button();
+
+            // selecting a number
+            $(".bingo_cell").click(function () {
+
+                $(this).toggleClass("selected");
+
+            });
+
+        });
     </script>
 
     <link href='@Url.Css("Game.css")' rel="stylesheet" type="text/css" />
@@ -35,7 +46,15 @@
                 <tr>
                 <td class="b bingo_cell"><span>@Model.BCol[i]</span></td>
                 <td class="i bingo_cell"><span>@Model.ICol[i]</span></td>
-                <td class="n bingo_cell"><span>@Model.NCol[i]</span></td>
+                @if (Model.NCol[i] == 0)
+                {
+                    <td class="n bingo_cell"><span>Free</span></td>
+                }
+                else
+                { 
+                    <td class="n bingo_cell"><span>@Model.NCol[i]</span></td>
+                }
+                
                 <td class="g bingo_cell"><span>@Model.GCol[i]</span></td>
                 <td class="o bingo_cell"><span>@Model.OCol[i]</span></td>
                 </tr>
@@ -48,7 +67,7 @@
 	</div>
  
 	<div id="ball_container">
-	<canvas id="canvas" width="540" height="325" />
+	    <canvas id="canvas" width="540" height="325" />
 	</div>
   
 	<div id="bingo_call_container">
