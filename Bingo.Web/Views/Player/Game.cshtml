@@ -10,6 +10,10 @@
     <script src='@Url.Script("bingo_balls.js")'></script>
 
     <script type="text/javascript">
+
+
+        var getNextBallUrl = '@Url.Action("GetNextBall", "Bingo")';
+
         $(function () {
             // set the call bingo button style
             $("#btn_CallBingo").button();

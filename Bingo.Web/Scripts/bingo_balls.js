@@ -19,31 +19,57 @@
 	var doSleep = true;
 
 	// keep track of the balls
-	var numbers = new Array(70);	// 70 is the max number of balls i expect
+	//var numbers = new Array(70);	// 70 is the max number of balls i expect
+	var numbers = new Array(100);
+	var seenNumbers = new Array();
 	var ballColors = new Array(70);
 	var balls = new Array();
 
-	$(function(){
-		$canvas = $("#canvas");
-		context = $canvas[0].getContext("2d");
-		
-		width = $canvas[0].width;
-		height = $canvas[0].height;
-		
-		var x = $canvas[0].width / 2;
-		var y = $canvas[0].height * .2;
-						
-		createWorld();
-		createBall(x,y);
-		drawWorld();
+	$(function () {
+	    $canvas = $("#canvas");
+	    context = $canvas[0].getContext("2d");
 
-		setInterval(updateStage, timeInterval);
+	    width = $canvas[0].width;
+	    height = $canvas[0].height;
 
-		// for demo just fill in a bunch of balls
-		fillBalls();
+	    var x = $canvas[0].width / 2;
+	    var y = $canvas[0].height * .2;
+
+	    createWorld();
+	    //createBall(x, y);
+	    drawWorld();
+
+	    setInterval(updateStage, timeInterval);
+
+	    // for demo just fill in a bunch of balls
+	    //fillBalls();
+	    setInterval(getNewBalls, 5000);
+	    //getNewBalls();
 	});
-	
-	// demo that creates 30 balls automatically
+
+	function getNewBalls() {
+	    $.get(getNextBallUrl, function (result) {
+
+	        // game still goes on
+	        if (!result.gameover) {
+	            var txt = result.ball.Letter + result.ball.Number;
+
+	            if ($.inArray(txt, seenNumbers) == -1) {
+	                seenNumbers.push(txt);
+	                createBall(10, 0, txt);
+	            }
+                // toss duplicates
+	            //else { alert("duplicate ball " + txt); }
+	        }
+	        else {
+	            // handle end of game
+	        }
+	    });
+
+	}
+
+    // demo that creates 30 balls automatically
+    /*
 	function fillBalls(){
 		if (balls.length < 30) {
 			var xpos = (Math.random() * 1000) % 400;	
@@ -56,7 +82,8 @@
 			setTimeout(fillBalls, 1000);
 		}
 	}
-	
+	*/
+
 	// update each stage
 	function updateStage() {
 		clearCanvas();
@@ -113,7 +140,7 @@
 	}
 		
 	// create a new ball
-	function createBall(x,y) {			
+	function createBall(x,y, bingoNumber) {			
 	
 		var ballSd = new b2CircleDef();
 		ballSd.density = 1
@@ -126,7 +153,7 @@
 		var ball = world.CreateBody(ballBd);
 		
 		balls.push(ball);
-		numbers[ball.m_shapeList.m_proxyId] = getBingoNumber();
+		numbers[ball.m_shapeList.m_proxyId] = bingoNumber; //getBingoNumber();
 		
 		//var colorTheme = colors[Math.floor(Math.random() * 1000) % 7];
 		var colorTheme = colors[0];
@@ -162,8 +189,6 @@
 
 		            context.beginPath();
 		            context.arc(pos.x, pos.y, r, 0, 2 * Math.PI, false);
-		            //context.fillStyle = colorTheme[1];
-		            //context.fill();
 		            // radial gradient
 		            var grd = context.createRadialGradient(pos.x - 15, pos.y - 15, 5, pos.x - 15, pos.y - 15, 30);
 		            grd.addColorStop(0, "#8ED6FF"); // light blue
@@ -173,8 +198,9 @@
 
 		            // add the number
 		            var bingoNum = numbers[shape.m_proxyId];
-		            var textx = bingoNum > 9 ? pos.x - 6 : pos.x - 4;
-		            var texty = pos.y + 4;
+		            var textx = bingoNum.length > 2 ? pos.x - 22 : pos.x - 15;
+		            if (bingoNum[0] == "I") textx = textx + 5;
+		            var texty = pos.y + 7;
 
 		            context.fillStyle = colorTheme[0];
 		            context.font = "bold 25px sans-serif";
