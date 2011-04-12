@@ -48,6 +48,9 @@ namespace Bingo.Web.Models
                 }
             }
 
+            //Add the free col
+            gameboard.NCol[2] = 0;
+
             return gameboard;
         }
 

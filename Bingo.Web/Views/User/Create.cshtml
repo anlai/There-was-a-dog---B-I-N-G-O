@@ -31,8 +31,12 @@ Example: Dinosaur 1  *@
 		</li>
 		<li>
 			@* For the clear and submit buttons an empty label is required. Example: <label>&nbsp;</label> *@
-			<label>&nbsp;</label>
-			<input class="button" type="submit" value="Create" /> | @Html.ActionLink("Cancel", "Index")
+            <div class="editor-label">
+			    <label>&nbsp;</label>
+            </div>            
+			<div class="editor-field">
+                <input class="button" type="submit" value="Create" /> | @Html.ActionLink("Cancel", "Index")
+			</div>
 		</li>
 	</ul>
 </fieldset>
