@@ -99,6 +99,8 @@ table thead form .field-validation-error{color:#000000;}
 /* ---------------- */
 /*    table         */
 /* ---------------- */
+
+/*
 table {border:1px solid #003054; border-collapse: collapse; margin:0.5em 0; width:100%;}
 th{text-align:left;}
 thead tr, tfoot tr  {background-color:#014A81; color:#FFFFFF;}
@@ -115,7 +117,7 @@ tr  > td:first-child, tr > td:last-child {width:40px; text-align:center;}
 tfoot tr  > td:first-child {text-align:left;}
 tfoot tr > td:last-child {text-align:right;}
 tfoot {text-align:center;}
-
+*/
 
 /* ---------------- */
 /*    footer        */

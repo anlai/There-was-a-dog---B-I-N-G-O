@@ -9,21 +9,24 @@
     <script src='@Url.Script("box2d.js")'></script>
     <script src='@Url.Script("bingo_balls.js")'></script>
 
+    <script type="text/javascript">
+        $(function () { $("#btn_CallBingo").button(); });
+    </script>
+
     <link href='@Url.Css("Game.css")' rel="stylesheet" type="text/css" />
 }
 
-<h2>Game</h2>
 
 	<div id="card_container">
 
         <table class="noicon">
             <thead>
                 <tr>
-                <th>B</th>
-                <th>I</th>
-                <th>N</th>
-                <th>G</th>
-                <th>O</th>
+                <th class="bingo_header">B</th>
+                <th class="bingo_header">I</th>
+                <th class="bingo_header">N</th>
+                <th class="bingo_header">G</th>
+                <th class="bingo_header">O</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,12 +47,12 @@
 
 	</div>
  
-	<div id="bingo_container">
-	<canvas id="canvas" width="345" height="450" style="border: 1px solid black;" />
+	<div id="ball_container">
+	<canvas id="canvas" width="540" height="325" />
 	</div>
   
 	<div id="bingo_call_container">
-		<input type="button" value="bingo"/>
+		<input type="button" value="I Got BINGO!" id="btn_CallBingo"/>
 	</div>
   
 	<div id="scoreboard_container">
