@@ -9,7 +9,7 @@ namespace Bingo.Web.Controllers
     /// Controller for the Client class
     /// </summary>
     [HandleTransactionsManually]
-    public class ClientController : ApplicationController
+    public class PlayerController : ApplicationController
     {
         public ActionResult Game()
         {
