@@ -4,7 +4,7 @@
 	var height, width;
 	
 	// default radius of the balls
-	var radius = 20;
+	var radius = 30;
 	
 	// [textcolor,backgroundcolor]
 	var colors = [["#ffffff", "#014a81"]];
@@ -171,7 +171,7 @@
 				var texty = pos.y + 4;						
 				
 				context.fillStyle = colorTheme[0];
-				context.font = "bold 12px sans-serif";
+				context.font = "bold 25px sans-serif";
 				context.fillText(numbers[shape.m_proxyId], textx, texty);
 				
 			}
