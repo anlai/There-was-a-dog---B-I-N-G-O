@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bingo.Web", "Bingo.Web\Bing
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bingo.Test", "Bingo.Test\Bingo.Test.csproj", "{EA0163A0-DE3D-45E0-B049-331E847B1C7D}"
 EndProject
+Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "Bingo.Sql", "Bingo.Sql\Bingo.Sql.dbproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,12 @@ Global
 		{EA0163A0-DE3D-45E0-B049-331E847B1C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA0163A0-DE3D-45E0-B049-331E847B1C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA0163A0-DE3D-45E0-B049-331E847B1C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
