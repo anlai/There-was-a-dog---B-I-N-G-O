@@ -151,31 +151,37 @@
 
 		switch(shape.m_type)
 		{
-			case b2Shape.e_circleShape:
-			{
-				var pos = shape.m_position;
-				var r = shape.m_radius;
-			
-				var colorTheme = ballColors[shape.m_proxyId];
-				
-				if (colorTheme == undefined) colorTheme = colors[0];
-				
-				context.beginPath();
-				context.arc(pos.x, pos.y, r, 0, 2*Math.PI, false);
-				context.fillStyle = colorTheme[1];
-				context.fill();
-				
-				// add the number
-				var bingoNum = numbers[shape.m_proxyId];
-				var textx = bingoNum > 9 ? pos.x - 6 : pos.x - 4;
-				var texty = pos.y + 4;						
-				
-				context.fillStyle = colorTheme[0];
-				context.font = "bold 25px sans-serif";
-				context.fillText(numbers[shape.m_proxyId], textx, texty);
-				
-			}
-			break;
+		    case b2Shape.e_circleShape:
+		        {
+		            var pos = shape.m_position;
+		            var r = shape.m_radius;
+
+		            var colorTheme = ballColors[shape.m_proxyId];
+
+		            if (colorTheme == undefined) colorTheme = colors[0];
+
+		            context.beginPath();
+		            context.arc(pos.x, pos.y, r, 0, 2 * Math.PI, false);
+		            //context.fillStyle = colorTheme[1];
+		            //context.fill();
+		            // radial gradient
+		            var grd = context.createRadialGradient(pos.x - 15, pos.y - 15, 5, pos.x - 15, pos.y - 15, 30);
+		            grd.addColorStop(0, "#8ED6FF"); // light blue
+		            grd.addColorStop(1, colorTheme[1]); // dark blue
+		            context.fillStyle = grd;
+		            context.fill();
+
+		            // add the number
+		            var bingoNum = numbers[shape.m_proxyId];
+		            var textx = bingoNum > 9 ? pos.x - 6 : pos.x - 4;
+		            var texty = pos.y + 4;
+
+		            context.fillStyle = colorTheme[0];
+		            context.font = "bold 25px sans-serif";
+		            context.fillText(numbers[shape.m_proxyId], textx, texty);
+
+		        }
+		        break;
 			case b2Shape.e_polyShape:
 			{
 				var poly = shape;
