@@ -9,49 +9,39 @@
     <script src='@Url.Script("box2d.js")'></script>
     <script src='@Url.Script("bingo_balls.js")'></script>
 
-    <link href='@Url.Content("Client.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Css("Game.css")' rel="stylesheet" type="text/css" />
 }
 
 <h2>Game</h2>
 
 	<div id="card_container">
-		<table class="card" cellpadding="20">
-			<tr>
-				<td>10</td>
-				<td>33</td>
-				<td>63</td>
-				<td>29</td>
-				<td>31</td>
-			</tr>
-			<tr>
-				<td>10</td>
-				<td>33</td>
-				<td>63</td>
-				<td>29</td>
-				<td>31</td>
-			</tr>
-			<tr>
-				<td>10</td>
-				<td>33</td>
-				<td>Free</td>
-				<td>29</td>
-				<td>31</td>
-			</tr>
-			<tr>
-				<td>10</td>
-				<td>33</td>
-				<td>63</td>
-				<td>29</td>
-				<td>31</td>
-			</tr>
-			<tr>
-				<td>10</td>
-				<td>33</td>
-				<td>63</td>
-				<td>29</td>
-				<td>31</td>
-			</tr>
-		</table>
+
+        <table class="noicon">
+            <thead>
+                <tr>
+                <th>B</th>
+                <th>I</th>
+                <th>N</th>
+                <th>G</th>
+                <th>O</th>
+                </tr>
+            </thead>
+            <tbody>
+		        @for (var i = 0; i < Model.BCol.Length; i++)
+                { 
+                <tr>
+                <td class="b bingo_cell"><span>@Model.BCol[i]</span></td>
+                <td class="i bingo_cell"><span>@Model.ICol[i]</span></td>
+                <td class="n bingo_cell"><span>@Model.NCol[i]</span></td>
+                <td class="g bingo_cell"><span>@Model.GCol[i]</span></td>
+                <td class="o bingo_cell"><span>@Model.OCol[i]</span></td>
+                </tr>
+                }            
+            </tbody>
+        </table>
+
+
+
 	</div>
  
 	<div id="bingo_container">
