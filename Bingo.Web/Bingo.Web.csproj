@@ -90,7 +90,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\BingoController.cs" />
-    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="ComponentRegistrar.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -214,7 +214,7 @@
     <None Include="CodeTemplates\AddView\CSHTML\ListDatatables.tt" />
     <None Include="CodeTemplates\AddView\CSHTML\ListTelerik.tt" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
-    <Content Include="Views\Client\Game.cshtml" />
+    <Content Include="Views\Player\Game.cshtml" />
     <Content Include="Views\Account\LogOn.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />

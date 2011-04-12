@@ -4,17 +4,9 @@
 	var height, width;
 	
 	// default radius of the balls
-	var radius = 20;
+	var radius = 30;
 	
 	// [textcolor,backgroundcolor]
-	// var colors  = [["#10222B", "#95AB64"],
-				  // ["#362C2A", "#732420"],
-				  // ["#2E2F38", "#FFD63E"],
-				  // ["#121212", "#E6F2DA"],
-				  // ["#343F40", "#736751"],
-				  // ["#000000", "#2D2B2A"],
-				  // ["#333b3A", "#B4BD51"]];
-	
 	var colors = [["#ffffff", "#014a81"]];
 	
 	// frame rate variables
@@ -98,7 +90,7 @@
 	function createGround(world) {			
 		
 		// ground
-		createBox(world, (-1) * width, height, 1000, 10);
+		createBox(world, (-1) * width, height, 5000, 10);
 		
 		// left wall
 		createBox(world, 0, 0, 10, 500);
@@ -179,7 +171,7 @@
 				var texty = pos.y + 4;						
 				
 				context.fillStyle = colorTheme[0];
-				context.font = "bold 12px sans-serif";
+				context.font = "bold 25px sans-serif";
 				context.fillText(numbers[shape.m_proxyId], textx, texty);
 				
 			}
