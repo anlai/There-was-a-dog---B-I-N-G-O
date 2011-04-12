@@ -45,10 +45,14 @@
     <Reference Include="Elmah">
       <HintPath>..\Bin\Elmah.dll</HintPath>
     </Reference>
+    <Reference Include="FluentNHibernate, Version=1.2.0.705, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL" />
     <Reference Include="HibernatingRhinos.Profiler.Appender">
       <HintPath>..\Bin\HibernatingRhinos.Profiler.Appender.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\Bin\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate.ByteCode.Spring">
       <HintPath>..\Bin\NHibernate.ByteCode.Spring.dll</HintPath>
     </Reference>
@@ -89,11 +93,13 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="ComponentRegistrar.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Ball.cs" />
     <Compile Include="Models\GameBoard.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +217,8 @@
     <Content Include="Views\Client\Game.cshtml" />
     <Content Include="Views\Account\LogOn.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
