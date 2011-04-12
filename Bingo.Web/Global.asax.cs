@@ -51,7 +51,7 @@ namespace Bingo.Web
 
             //AutomapperConfig.Configure();
 
-            NHibernateSessionConfiguration.Mappings.UseFluentMappings(typeof(Class1).Assembly);
+            NHibernateSessionConfiguration.Mappings.UseFluentMappings(typeof(Ball).Assembly);
 
             IWindsorContainer container = InitializeServiceLocator();
         }

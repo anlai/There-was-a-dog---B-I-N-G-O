@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
-using UCDArch.Core.PersistanceSupport;
-using UCDArch.Core.Utils;
+using Bingo.Web.Models;
 
 namespace Bingo.Web.Controllers
 {
@@ -13,20 +11,9 @@ namespace Bingo.Web.Controllers
     {
         public ActionResult Game()
         {
-            var viewModel = ClientViewModel.Create(Repository);
-            return View(viewModel);
-        }
-    }
+            var board = GameBoard.Random();
 
-    public class ClientViewModel
-    {
-        public static ClientViewModel Create(IRepository repository)
-        {
-            Check.Require(repository != null, "Repository is required.");
-
-            var viewModel = new ClientViewModel();
-
-            return viewModel;
+            return View(board);
         }
     }
 }
