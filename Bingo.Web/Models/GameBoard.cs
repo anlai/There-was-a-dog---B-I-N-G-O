@@ -54,6 +54,38 @@ namespace Bingo.Web.Models
             return gameboard;
         }
 
+        public int[,] AsMatrix()
+        {
+            var board = new int[5,5];
+
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            board[j, i] = BCol[j];
+                            break;
+                        case 1:
+                            board[j, i] = ICol[j];
+                            break;   
+                        case 2:      
+                            board[j, i] = NCol[j];
+                            break;   
+                        case 3:      
+                            board[j, i] = GCol[j];
+                            break;   
+                        case 4:      
+                            board[j, i] = OCol[j];
+                            break;
+                    }
+                }
+            }
+
+            return board;
+        }
+
         private static int[] CreateNRandomNumbers(int n, int min, int max)
         {
             var rand = new Random();

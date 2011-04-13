@@ -19,6 +19,100 @@ namespace Bingo.Web.Models
 
         public ICollection<GameBall> GameBalls { get; set; }
 
+        public bool ValidateBingo(int[] chosenBalls, User user)
+        {
+            var userBoard = user.GetBoard();
+            var board = userBoard.AsMatrix();
+
+            for (int i = 0; i < 5; i++)
+            {
+                var numInARow = 0;
+                var numInACol = 0;
+                //For each row or call, see if there are 5 numbers on their gameboard that were also chosen
+                for (int j = 0; j < 5; j++)
+                {
+                    if (j == 2 && i == 2) //Automatically give them the free square
+                    {
+                        numInARow++;
+                        numInACol++;
+                        continue;
+                    }
+
+                    var currentBallXAxis = board[i, j];
+                    var currentBallYAxis = board[j, i];
+                    
+                    if (chosenBalls.Contains(currentBallXAxis))
+                    {
+                        //User ball matches, let's make sure it's a valid ball for this game
+                        if (GameBalls.Where(x => x.Number == currentBallXAxis).Any())
+                        {
+                            //The ball matches one picked
+                            numInARow++;
+                        }
+                    }
+
+                    if (chosenBalls.Contains(currentBallYAxis))
+                    {
+                        //User ball matches, let's make sure it's a valid ball for this game
+                        if (GameBalls.Where(x => x.Number == currentBallYAxis).Any())
+                        {
+                            //The ball matches one picked
+                            numInACol++;
+                        }
+                    }
+                }
+
+                if (numInARow == 5 || numInACol == 5)
+                {
+                    //Bingo!!!
+                    return true;
+                }
+            }
+
+            var numInLr = 0;
+            var numInRl = 0;
+
+            for (int i = 0; i < 5; i++)
+            {
+                var currentBallLr = board[i, i];
+                var currentBallRl = board[i, 4-i];
+
+                if (i == 2) //Automatically give them the free square
+                {
+                    numInLr++;
+                    numInRl++;
+                    continue;
+                }
+
+                if (chosenBalls.Contains(currentBallLr))
+                {
+                    //User ball matches, let's make sure it's a valid ball for this game
+                    if (GameBalls.Where(x => x.Number == currentBallLr).Any())
+                    {
+                        //The ball matches one picked
+                        numInLr++;
+                    }
+                }
+
+                if (chosenBalls.Contains(currentBallRl))
+                {
+                    //User ball matches, let's make sure it's a valid ball for this game
+                    if (GameBalls.Where(x => x.Number == currentBallRl).Any())
+                    {
+                        //The ball matches one picked
+                        numInRl++;
+                    }
+                }
+            }
+
+            if (numInLr == 5 || numInRl == 5)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         /*
         public virtual HashSet<int> CalledNumbersArray
         {
