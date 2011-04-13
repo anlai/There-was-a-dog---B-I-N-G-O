@@ -35,8 +35,12 @@
     <link href='@Url.Css("Game.css")' rel="stylesheet" type="text/css" />
 }
 
+    <div id="new_ball_container" class="ui-corner-all game_box">
+        <div id="new_ball"><span id="number">I20</span></div>
+    </div>
 
-	<div id="card_container">
+
+	<div id="card_container" class="ui-corner-all game_box">
 
         <table class="noicon">
             <thead>
@@ -52,19 +56,19 @@
 		        @for (var i = 0; i < Model.BCol.Length; i++)
                 { 
                 <tr>
-                <td class="b bingo_cell"><span>@Model.BCol[i]</span></td>
-                <td class="i bingo_cell"><span>@Model.ICol[i]</span></td>
+                <td class="b bingo_cell"><div class="ui-corner-all">@Model.BCol[i]</div></td>
+                <td class="i bingo_cell"><div>@Model.ICol[i]</div></td>
                 @if (Model.NCol[i] == 0)
                 {
-                    <td class="n bingo_cell"><span>Free</span></td>
+                    <td class="n bingo_cell"><div>Free</div></td>
                 }
                 else
                 { 
-                    <td class="n bingo_cell"><span>@Model.NCol[i]</span></td>
+                    <td class="n bingo_cell"><div>@Model.NCol[i]</div></td>
                 }
                 
-                <td class="g bingo_cell"><span>@Model.GCol[i]</span></td>
-                <td class="o bingo_cell"><span>@Model.OCol[i]</span></td>
+                <td class="g bingo_cell"><div>@Model.GCol[i]</div></td>
+                <td class="o bingo_cell"><div>@Model.OCol[i]</div></td>
                 </tr>
                 }            
             </tbody>
@@ -74,15 +78,15 @@
 
 	</div>
  
-	<div id="ball_container">
+	<div id="ball_container" class="ui-corner-all game_box">
 	    <canvas id="canvas" width="540" height="325" />
 	</div>
   
-	<div id="bingo_call_container">
+	<div id="bingo_call_container" class="ui-corner-all game_box">
 		<input type="button" value="I Got BINGO!" id="btn_CallBingo"/>
 	</div>
   
-	<div id="scoreboard_container">
+	<div id="scoreboard_container" class="ui-corner-all game_box">
 		&nbsp;
 	</div>
   
