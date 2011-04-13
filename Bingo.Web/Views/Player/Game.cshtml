@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Game";
+}
+
+﻿@model Bingo.Web.Models.GameBoard
+
+@{
+    ViewBag.Title = "Game";
+}
+
+@section AdditionalScripts{
+    <script src='@Url.Script("protoclass.js")'></script>
+    <script src='@Url.Script("box2d.js")'></script>
+    <script src='@Url.Script("bingo_balls.js")'></script>
+
+    <script type="text/javascript">
+
+
+        var getNextBallUrl = '@Url.Action("GetNextBall", "Bingo")';
+
+        $(function () {
+            // set the call bingo button style
+            $("#btn_CallBingo").button();
+
+            // selecting a number
+            $(".bingo_cell").click(function () {
+
+                $(this).toggleClass("selected");
+
+            });
+
+        });
+    </script>
+
+    <link href='@Url.Css("Game.css")' rel="stylesheet" type="text/css" />
+}
+
+
+	<div id="card_container">
+
+        <table class="noicon">
+            <thead>
+                <tr>
+                <th class="bingo_header">B</th>
+                <th class="bingo_header">I</th>
+                <th class="bingo_header">N</th>
+                <th class="bingo_header">G</th>
+                <th class="bingo_header">O</th>
+                </tr>
+            </thead>
+            <tbody>
+		        @for (var i = 0; i < Model.BCol.Length; i++)
+                { 
+                <tr>
+                <td class="b bingo_cell"><span>@Model.BCol[i]</span></td>
+                <td class="i bingo_cell"><span>@Model.ICol[i]</span></td>
+                @if (Model.NCol[i] == 0)
+                {
+                    <td class="n bingo_cell"><span>Free</span></td>
+                }
+                else
+                { 
+                    <td class="n bingo_cell"><span>@Model.NCol[i]</span></td>
+                }
+                
+                <td class="g bingo_cell"><span>@Model.GCol[i]</span></td>
+                <td class="o bingo_cell"><span>@Model.OCol[i]</span></td>
+                </tr>
+                }            
+            </tbody>
+        </table>
+
+
+
+	</div>
+ 
+	<div id="ball_container">
+	    <canvas id="canvas" width="540" height="325" />
+	</div>
+  
+	<div id="bingo_call_container">
+		<input type="button" value="I Got BINGO!" id="btn_CallBingo"/>
+	</div>
+  
+	<div id="scoreboard_container">
+		&nbsp;
+	</div>
+  
+
