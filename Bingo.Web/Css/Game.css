@@ -3,26 +3,28 @@
     width: 450px;
     float: left;
     
-    border: 1px solid lightgray;
+    border: 1px solid #327e04;
 }
 .bingo_cell
 {
     padding: 1em;
     font-size: 25px;
     cursor: pointer;
+    text-align: center;
+    
 }
 
 .bingo_cell:hover
 {
     -moz-transform: scale(1.5);
     -webkit-transform: scale(1.5);
-    background-color: Orange;
+    background-color: #7efe1b;
     cursor: pointer;
 }
 
 .selected
 {
-    background-color: Green;
+    background-color: #459e00;
 }
 
 .bingo_header
@@ -35,7 +37,7 @@
     width: 556px;
     margin-left: 10px;
     float: left;
-    border: 1px solid lightgray;
+    border: 1px solid #327e04;
 }
                   
 #bingo_call_container
@@ -46,7 +48,7 @@
     padding: 1em 0;
     width: 556px;
     text-align: center;
-    border: 1px solid lightgray;
+    border: 1px solid #327e04;
 }
 
 #btn_CallBingo
@@ -60,6 +62,6 @@
     float: left;
     width: 100%;
     margin-top: 10px;
-    height: 50px;
-    border: 1px solid lightgray;
+    height: 90px;
+    border: 1px solid #327e04;
 }
