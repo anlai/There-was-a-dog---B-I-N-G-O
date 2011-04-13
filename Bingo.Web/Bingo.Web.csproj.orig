@@ -201,11 +201,14 @@
     <Content Include="Views\Game\Current.cshtml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Content Include="Views\Player\Game.cshtml" />
-    <Content Include="Views\Game\NewGame.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Navigation.cshtml" />
+=======
+    <Content Include="Views\Game\NewGame.cshtml" />
+>>>>>>> 3d149ad80eedd60b28cb51ed19fe11ad2f3f2972
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -16,12 +16,12 @@
 
 <br />
 <p>Numbers already called:</p>
-@if (Model.CalledNumbersArray.Count > 0)
+@if (Model.GameBalls.Count > 0)
 {
 <ul>
-    @foreach (var ball in Model.CalledNumbersArray)
+    @foreach (var ball in Model.GameBalls)
     {
-        <li>Ball #@ball.ToBingoBall()</li>
+        <li>Ball #@ball.Letter@ball.Number</li>
     }
 </ul>
 }

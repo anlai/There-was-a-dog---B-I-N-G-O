@@ -1,8 +1,12 @@
-﻿namespace Bingo.Web.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Bingo.Web.Models
 {
     public class Ball
     {
-        public char Letter { get; set; }
+        [Required]
+        [StringLength(1)]
+        public string Letter { get; set; }
 
         public int Number { get; set; }
 

@@ -25,5 +25,10 @@
 
             return character + num;
         }
+
+        public static string ToBingoBallLetter(this int num)
+        {
+            return num.ToBingoBall()[0].ToString();
+        }
     }
 }
