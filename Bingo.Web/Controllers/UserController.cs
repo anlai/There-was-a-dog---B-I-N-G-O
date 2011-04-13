@@ -7,13 +7,11 @@ namespace Bingo.Web.Controllers
 { 
     public class UserController : ApplicationController
     {
-        private readonly BingoContext _db = new BingoContext();
-
         //
         // GET: /User/
         public ViewResult Index()
         {
-            return View(_db.Users.ToList());
+            return View(Db.Users.ToList());
         }
 
         public ActionResult Create()
@@ -37,8 +35,8 @@ namespace Bingo.Web.Controllers
                 Board = GameBoard.CreateSerializedString(GameBoard.Random())
             };
 
-            _db.Users.Add(newUser);
-            _db.SaveChanges();
+            Db.Users.Add(newUser);
+            Db.SaveChanges();
 
             Message = "Your information was updated!";
 
@@ -47,20 +45,14 @@ namespace Bingo.Web.Controllers
 
         public ActionResult Details(int id)
         {
-            return View(_db.Users.Find(id));
+            return View(Db.Users.Find(id));
         }
 
         private bool CurrentUserExists()
         {
             var currentUserName = ControllerContext.HttpContext.User.Identity.Name;
             
-            return _db.Users.Any(x => x.Kerb == currentUserName);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            _db.Dispose();
-            base.Dispose(disposing);
+            return Db.Users.Any(x => x.Kerb == currentUserName);
         }
     }
 }
