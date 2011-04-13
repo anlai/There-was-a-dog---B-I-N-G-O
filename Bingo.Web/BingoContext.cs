@@ -13,7 +13,9 @@ namespace Bingo.Web
         // Note: this will destroy and re-create your database with every model change.
         // 
         //System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<Bingo.Web.BingoContext>());
+
         public DbSet<User> Users { get; set; }
         public DbSet<Game> Games { get; set; }
+        public DbSet<GameBall> GameBalls { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace Bingo.Web.Controllers
     /// </summary>
     public class BingoController : ApplicationController
     {
-        static readonly char[] Letters = new[] { 'B', 'I', 'N', 'G', 'O' };
+        static readonly string [] Letters = new[] { "B", "I", "N", "G", "O" };
         static readonly List<Ball> AllBalls = new List<Ball>();
 
         //Cache the result for 5 seconds

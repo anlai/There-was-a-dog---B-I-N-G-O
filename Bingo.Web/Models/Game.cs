@@ -6,12 +6,20 @@ namespace Bingo.Web.Models
 {
     public class Game : DomainObject
     {
-        public virtual string CalledNumbers { get; set; }
+        public Game()
+        {
+            GameBalls = new List<GameBall>();
+        }
+
+        //public virtual string CalledNumbers { get; set; }
         public virtual bool InProgress { get; set; }
         public virtual DateTime? LastBallCalled { get; set; }
         public virtual DateTime StartDate { get; set; }
         public virtual DateTime? EndDate { get; set; }
 
+        public ICollection<GameBall> GameBalls { get; set; }
+
+        /*
         public virtual HashSet<int> CalledNumbersArray
         {
             get
@@ -35,5 +43,6 @@ namespace Bingo.Web.Models
                 CalledNumbers = string.Join(",", numbers);
             }
         }
+         */
     }
 }

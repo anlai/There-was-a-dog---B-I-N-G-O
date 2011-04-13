@@ -1,0 +1,13 @@
+﻿@model Bingo.Web.Models.Game
+
+@{
+    ViewBag.Title = "Create New Game";
+}
+
+<h3>Create a new game!</h3>
+
+@using (Html.BeginForm("CreateGame", "Game", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Create a new game!" />
+}
