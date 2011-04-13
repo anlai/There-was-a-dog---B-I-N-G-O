@@ -35,8 +35,12 @@
     <link href='@Url.Css("Game.css")' rel="stylesheet" type="text/css" />
 }
 
+    <div id="new_ball_container" class="ui-corner-all game_box">
+        <div id="new_ball"><span id="number">I20</span></div>
+    </div>
 
-	<div id="card_container" class="ui-corner-all">
+
+	<div id="card_container" class="ui-corner-all game_box">
 
         <table class="noicon">
             <thead>
@@ -74,15 +78,15 @@
 
 	</div>
  
-	<div id="ball_container" class="ui-corner-all">
+	<div id="ball_container" class="ui-corner-all game_box">
 	    <canvas id="canvas" width="540" height="325" />
 	</div>
   
-	<div id="bingo_call_container" class="ui-corner-all">
+	<div id="bingo_call_container" class="ui-corner-all game_box">
 		<input type="button" value="I Got BINGO!" id="btn_CallBingo"/>
 	</div>
   
-	<div id="scoreboard_container" class="ui-corner-all">
+	<div id="scoreboard_container" class="ui-corner-all game_box">
 		&nbsp;
 	</div>
   

@@ -207,8 +207,8 @@
 		            context.arc(pos.x, pos.y, r, 0, 2 * Math.PI, false);
 		            // radial gradient
 		            var grd = context.createRadialGradient(pos.x - 15, pos.y - 15, 5, pos.x - 15, pos.y - 15, 30);
-		            grd.addColorStop(0, "#7efe1b"); // light blue
-		            grd.addColorStop(1, "#459e00"); // dark blue
+		            grd.addColorStop(0, "#7efe1b"); // light green
+		            grd.addColorStop(1, "#459e00"); // dark green
 		            context.fillStyle = grd;
 		            context.fill();
 

@@ -1,4 +1,11 @@
-﻿#card_container
+﻿.game_box
+{
+    background-color: hsla(0, 0%, 67%, .5);
+    box-shadow: 2px 2px 2px #BBBBBB;
+}
+
+
+#card_container
 {
     width: 450px;
     float: left;
@@ -64,4 +71,40 @@
     margin-top: 10px;
     height: 90px;
     border: 1px solid #327e04;
+}
+
+#new_ball_container
+{
+    border: 1px solid #327e04;
+    height: 125px;
+    left: 913px;
+    margin-top: 20px;
+    position: absolute;
+    top: 0;
+    width: 150px;
+    z-index: 150;
+}
+
+#new_ball_container div
+{       
+     background-color: #67b021;
+     border: 1px solid #327e04;
+     height: 118px;
+     -moz-border-radius:75px;
+     -webkit-border-radius: 75px;
+     width: 118px;
+     margin-top: 1px;
+     margin-left: 13px;
+     background: -moz-radial-gradient(50% 50% 85deg,circle closest-corner, #7EFE1B, #459E00, #C7C7C7 100%);
+     text-align: center;
+     
+}
+
+#new_ball_container #number
+{
+    font-size: 50px;
+    font-weight: bold;
+    color: White;
+    margin-top: 50px;
+    display:inline-block;
 }
