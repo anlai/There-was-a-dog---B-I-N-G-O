@@ -71,5 +71,22 @@ namespace Bingo.Web.Controllers
 
             return RedirectToAction("Current");
         }
+
+        [HttpPost]
+        public ActionResult CloseGame(int id)
+        {
+            var game = Db.Games.Find(id);
+
+            if (game != null)
+            {
+                game.InProgress = false;
+                Db.Entry(game).State = EntityState.Modified;
+                Db.SaveChanges();
+
+                Message = "Game closed!";
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

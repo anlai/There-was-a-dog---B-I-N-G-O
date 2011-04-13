@@ -29,3 +29,12 @@ else
 { 
     <text>No balls have been picked yet</text>
 }
+
+<br />
+<hr />
+@using (Html.BeginForm("CloseGame", "Game", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x=>x.Id)
+    <input type="submit" value="Close Game (demo only)" />
+}
