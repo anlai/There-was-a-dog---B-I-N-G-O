@@ -3,5 +3,11 @@
 namespace Bingo.Web.Controllers
 {
     [Authorize]
-    public class ApplicationController : Controller { }
+    public class ApplicationController : Controller
+    {
+        public string Message
+        {
+            set { TempData["Message"] = value; }
+        }
+    }
 }

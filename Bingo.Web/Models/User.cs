@@ -6,7 +6,10 @@ namespace Bingo.Web.Models
     {
         [Required]
         public string Kerb { get; set; }
+        [Required]
+        [StringLength(128)]
         public string Name { get; set; }
+        [StringLength(256)]
         public string Board { get; set; }
 
         public GameBoard GetBoard()

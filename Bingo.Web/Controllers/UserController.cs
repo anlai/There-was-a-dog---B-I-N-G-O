@@ -1,108 +1,65 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Bingo.Web.Models;
-using Bingo.Web;
 
 namespace Bingo.Web.Controllers
 { 
-    public class UserController : Controller
+    public class UserController : ApplicationController
     {
-        private BingoContext db = new BingoContext();
+        private readonly BingoContext _db = new BingoContext();
 
         //
         // GET: /User/
-
         public ViewResult Index()
         {
-            return View(db.Users.ToList());
+            return View(_db.Users.ToList());
         }
-
-        //
-        // GET: /User/Details/5
-
-        public ViewResult Details(int id)
-        {
-            User user = db.Users.Find(id);
-            return View(user);
-        }
-
-        //
-        // GET: /User/Create
 
         public ActionResult Create()
         {
-            return View();
-        } 
+            if (CurrentUserExists()) throw new NotImplementedException();
 
-        //
-        // POST: /User/Create
+            return View(new User { Kerb = ControllerContext.HttpContext.User.Identity.Name });
+        }
 
         [HttpPost]
         public ActionResult Create(User user)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(user);
+
+            if (CurrentUserExists()) throw new NotImplementedException();
+
+            var newUser = new User
             {
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");  
-            }
+                Kerb = ControllerContext.HttpContext.User.Identity.Name,
+                Name = user.Name,
+                Board = GameBoard.CreateSerializedString(GameBoard.Random())
+            };
 
-            return View(user);
+            _db.Users.Add(newUser);
+            _db.SaveChanges();
+
+            Message = "Your information was updated!";
+
+            return RedirectToAction("Index", "Home");
         }
-        
-        //
-        // GET: /User/Edit/5
- 
-        public ActionResult Edit(int id)
+
+        public ActionResult Details(int id)
         {
-            User user = db.Users.Find(id);
-            return View(user);
+            return View(_db.Users.Find(id));
         }
 
-        //
-        // POST: /User/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(User user)
+        private bool CurrentUserExists()
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(user);
-        }
-
-        //
-        // GET: /User/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            User user = db.Users.Find(id);
-            return View(user);
-        }
-
-        //
-        // POST: /User/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {            
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var currentUserName = ControllerContext.HttpContext.User.Identity.Name;
+            
+            return _db.Users.Any(x => x.Kerb == currentUserName);
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            _db.Dispose();
             base.Dispose(disposing);
         }
     }

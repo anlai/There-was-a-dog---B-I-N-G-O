@@ -11,16 +11,9 @@
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
+    @Html.HiddenFor(x=>x.Kerb)
     <fieldset>
         <legend>User</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Kerb)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Kerb)
-            @Html.ValidationMessageFor(model => model.Kerb)
-        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -28,14 +21,6 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
             @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Board)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Board)
-            @Html.ValidationMessageFor(model => model.Board)
         </div>
 
         <p>
