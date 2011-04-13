@@ -12,8 +12,8 @@ namespace Bingo.Web
         // code to the Application_Start method in your Global.asax file.
         // Note: this will destroy and re-create your database with every model change.
         // 
-        // System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<Bingo.Web.BingoContext>());
-
+        //System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<Bingo.Web.BingoContext>());
         public DbSet<User> Users { get; set; }
+        public DbSet<Game> Games { get; set; }
     }
 }
