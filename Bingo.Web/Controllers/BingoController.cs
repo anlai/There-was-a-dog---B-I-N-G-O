@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Web.Mvc;
 using Bingo.Web.Helpers;
 using Bingo.Web.Models;
@@ -40,12 +41,32 @@ namespace Bingo.Web.Controllers
         [HttpPost]
         public JsonNetResult ReportBingo(int id, string userId, List<int> numbers)
         {
-            return new JsonNetResult(true);
+            var game = Db.Games.Where(a => a.InProgress).Single();
+            var user = Db.Users.Find(userId);
+
+            var validBingo = game.ValidateBingo(numbers.ToArray(), user);
+
+            var call = new BingoCall {CalledAt = DateTime.Now, Callee = user, Game = game, ValidBoard = validBingo};
+
+            Db.BingoCalls.Add(call);
+
+            if (validBingo)
+            {
+                game.Winner = user;
+                game.InProgress = false;
+                game.EndDate = DateTime.Now;
+
+                Db.Entry(game).State = EntityState.Modified;
+            }
+
+            Db.SaveChanges();
+
+            return new JsonNetResult(validBingo);
         }
 
         public JsonNetResult Initialize()
         {
-            var game = Db.Games.Include("GameBalls").Where(a => a.InProgress).FirstOrDefault();
+            var game = Db.Games.Include("GameBalls").Where(a => a.InProgress).SingleOrDefault();
             var balls = game.GameBalls.Select(a=>new{a.Letter,a.Number}).ToList();
             
             return new JsonNetResult(new {balls, gameId=game.Id});
