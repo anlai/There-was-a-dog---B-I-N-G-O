@@ -95,6 +95,7 @@
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameBall.cs" />
     <Compile Include="Models\GameBoard.cs" />
+    <Compile Include="Models\GameViewModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -107,11 +108,25 @@
     <Content Include="Css\images\ui-bg_glass_0_3182c0_1x400.png" />
     <Content Include="Css\images\ui-bg_glass_0_fbf7eb_1x400.png" />
     <Content Include="Css\images\ui-bg_glass_0_ffffff_1x400.png" />
+    <Content Include="Css\images\ui-bg_glass_55_fcf0ba_1x400.png" />
+    <Content Include="Css\images\ui-bg_gloss-wave_100_ece8da_500x100.png" />
+    <Content Include="Css\images\ui-bg_highlight-hard_100_f5f3e5_1x100.png" />
+    <Content Include="Css\images\ui-bg_highlight-hard_100_fafaf4_1x100.png" />
+    <Content Include="Css\images\ui-bg_highlight-hard_15_459e00_1x100.png" />
+    <Content Include="Css\images\ui-bg_highlight-hard_95_cccccc_1x100.png" />
     <Content Include="Css\images\ui-bg_highlight-soft_0_014a81_1x100.png" />
+    <Content Include="Css\images\ui-bg_highlight-soft_25_67b021_1x100.png" />
+    <Content Include="Css\images\ui-bg_highlight-soft_95_ffedad_1x100.png" />
     <Content Include="Css\images\ui-bg_inset-soft_0_fcf0f0_1x100.png" />
+    <Content Include="Css\images\ui-bg_inset-soft_15_2b2922_1x100.png" />
     <Content Include="Css\images\ui-icons_014a81_256x240.png" />
     <Content Include="Css\images\ui-icons_222222_256x240.png" />
+    <Content Include="Css\images\ui-icons_808080_256x240.png" />
+    <Content Include="Css\images\ui-icons_847e71_256x240.png" />
+    <Content Include="Css\images\ui-icons_8dc262_256x240.png" />
     <Content Include="Css\images\ui-icons_c83900_256x240.png" />
+    <Content Include="Css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Css\images\ui-icons_eeeeee_256x240.png" />
     <Content Include="Css\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Css\images\ui-icons_fffff_256x240.png" />
     <Content Include="Css\jquery-ui-1.8.11.custom.css" />
@@ -144,6 +159,7 @@
     <Content Include="Css\themes\base\jquery.ui.tabs.css" />
     <Content Include="Css\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\bingo_logo.png" />
     <Content Include="Scripts\bingo_balls.js" />
     <Content Include="Scripts\box2d.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />

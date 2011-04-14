@@ -28,6 +28,19 @@ namespace Bingo.Web.Controllers
             return new JsonNetResult(new { ball, gameover = false });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">Game Id</param>
+        /// <param name="userId">User Id</param>
+        /// <param name="numbers">The selected numbers by the player</param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonNetResult ReportBingo(int id, string userId, List<int> numbers)
+        {
+            return new JsonNetResult(true);
+        }
+
         public JsonNetResult Initialize()
         {
             return new JsonNetResult(AllBalls);

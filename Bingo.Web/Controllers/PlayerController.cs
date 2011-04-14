@@ -1,7 +1,9 @@
-﻿﻿using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Bingo.Web.Models;
-using UCDArch.Web.Attributes;
+﻿using UCDArch.Core.PersistanceSupport;
+﻿using UCDArch.Core.Utils;
+﻿using UCDArch.Web.Attributes;
 
 namespace Bingo.Web.Controllers
 {
@@ -12,9 +14,7 @@ namespace Bingo.Web.Controllers
     {
         public ActionResult Game()
         {
-            var board = GameBoard.Random();
-
-            return View(board);
+            return View(GameViewModel.Create(User.Identity.Name));
         }
     }
 }

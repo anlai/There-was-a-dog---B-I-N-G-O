@@ -66,7 +66,7 @@
 	                //else { alert("duplicate ball " + txt); }
 	            }
 	            else {
-	                // handle end of game
+	                alert("game is over");
 	            }
 	        });
 
