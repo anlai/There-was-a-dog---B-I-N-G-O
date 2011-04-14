@@ -17,5 +17,6 @@ namespace Bingo.Web
         public DbSet<User> Users { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<GameBall> GameBalls { get; set; }
+        public DbSet<BingoCall> BingoCalls { get; set; }
     }
 }

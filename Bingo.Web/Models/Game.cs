@@ -12,12 +12,14 @@ namespace Bingo.Web.Models
         }
 
         //public virtual string CalledNumbers { get; set; }
-        public virtual bool InProgress { get; set; }
-        public virtual DateTime? LastBallCalled { get; set; }
-        public virtual DateTime StartDate { get; set; }
-        public virtual DateTime? EndDate { get; set; }
+        public bool InProgress { get; set; }
+        public DateTime? LastBallCalled { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public User Winner { get; set; }
 
         public ICollection<GameBall> GameBalls { get; set; }
+        public ICollection<BingoCall> BingoCalls { get; set; }
 
         public bool ValidateBingo(int[] chosenBalls, User user)
         {

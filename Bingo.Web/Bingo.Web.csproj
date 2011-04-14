@@ -91,6 +91,7 @@
     </Compile>
     <Compile Include="Helpers\IntExtensions.cs" />
     <Compile Include="Models\Ball.cs" />
+    <Compile Include="Models\BingoCall.cs" />
     <Compile Include="Models\DomainObject.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameBall.cs" />
