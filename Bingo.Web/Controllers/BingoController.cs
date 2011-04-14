@@ -42,7 +42,7 @@ namespace Bingo.Web.Controllers
         public JsonNetResult ReportBingo(int id, string userId, List<int> numbers)
         {
             var game = Db.Games.Where(a => a.InProgress).Single();
-            var user = Db.Users.Find(userId);
+            var user = Db.Users.Where(x=>x.Kerb == userId).Single();
 
             var validBingo = game.ValidateBingo(numbers.ToArray(), user);
 
