@@ -48,7 +48,20 @@
         function reportBingo() {
             var selectedNumbers = [];
             $.each($(".selected"), function (index, item) { selectedNumbers.push(parseInt($(item).html())); });
-            $.post(reportBingoUrl, {id: gameId, userId: userId, numbers: selectedNumbers}, function(result){alert(result);});
+
+            var data = { id: gameId, userId: userId, numbers: selectedNumbers };
+
+            $.ajax({
+                url: reportBingoUrl,
+                data: JSON.stringify(data),
+                type: 'POST',
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    // result == true, game over
+                    gameOver = result;
+                }
+            });
         }
 
         // load all balls for an inprogress game
