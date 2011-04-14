@@ -29,7 +29,7 @@ namespace Bingo.Web
                             {
                                 Kerb = "postit",
                                 Name = "Scott Kirkland",
-                                Board = GameBoard.CreateSerializedString(GameBoard.Random())
+                                Board = "8,10,5,3,1,23,25,20,18,16,38,40,0,33,31,53,55,50,48,46,68,70,65,63,61"
                             };
             var alan = new User
                            {
