@@ -9,9 +9,9 @@
 }
 
 @section AdditionalScripts{
-    <script src='@Url.Script("protoclass.js")'></script>
-    <script src='@Url.Script("box2d.js")'></script>
-    <script src='@Url.Script("bingo_balls.js")'></script>
+    <script src='@Url.Content("~/scripts/protoclass.js")'></script>
+    <script src='@Url.Content("~/scripts/box2d.js")'></script>
+    <script src='@Url.Content("~/scripts/bingo_balls.js")'></script>
 
     <script type="text/javascript">
         //=====================================
@@ -41,12 +41,14 @@
         // game id
         var gameId;
         // indicator if game is over
-        var gameOver = false;
+        var isgameOver = false;
 
         $(function () {
 
             // set the call bingo button style
             $("#btn_CallBingo").button().click(reportBingo);
+
+            $("a.button").button();
 
             // selecting a number
             $(".bingo_cell").click(function () {
@@ -55,7 +57,22 @@
 
             });
 
+            $("#gameover_container").dialog({
+                modal: true,
+                closeOnEscape: false,
+                autoOpen: false,
+                height: 200, width: 400,
+                buttons: {
+                    "Back to Waiting Room": function () { 
+                        window.location = '@Url.Action("Index")';
+                    }
+                },
+                open: function (event, ui) { jQuery('.ui-dialog-titlebar-close').hide(); }
+            });
+
             initialize();
+
+            setTimeout(gameOver, 5000);
         });
 
         // reports bingo to the server and reports back
@@ -73,7 +90,7 @@
                 dataType: 'json',
                 success: function (result) {
                     // result == true, game over
-                    gameOver = result;
+                    isgameOver = result;
                 }
             });
         }
@@ -125,11 +142,15 @@
         }
 
         function gameOver() {
-            alert("game over");
+            // clear out the timer
+            clearInterval(ballIntervalId);
+
+            // show game over dialog
+            $("#gameover_container").dialog("open");
         }
     </script>
 
-    <link href='@Url.Css("Game.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/css/Game.css")' rel="stylesheet" type="text/css" />
 }
 
     <div id="new_ball_container" class="ui-corner-all game_box">
@@ -188,3 +209,10 @@
 	</div>
   
 
+    <div id="gameover_container" title="Game Over">
+    
+        <p>
+        Someone has gotten BINGO, this game is now over.  Please use the link below to head to the waiting room to find out who won.
+        </p>
+        
+    </div>
