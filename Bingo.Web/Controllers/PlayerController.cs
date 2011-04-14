@@ -14,7 +14,14 @@ namespace Bingo.Web.Controllers
     {
         public ActionResult Game()
         {
-            return View(GameViewModel.Create(User.Identity.Name));
+            var user = Db.Users.Where(a => a.Kerb == User.Identity.Name).SingleOrDefault();
+
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Error");
+            }
+
+            return View(GameViewModel.Create(User.Identity.Name, user.GetBoard()));
         }
     }
 }

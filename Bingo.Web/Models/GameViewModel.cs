@@ -8,11 +8,12 @@ namespace Bingo.Web.Models
         public DateTime ServerTime { get; set; }
         public string UserId { get; set; }
 
-        public static GameViewModel Create(string userid)
+        public static GameViewModel Create(string userid, GameBoard gameBoard)
         {
+
             var viewModel = new GameViewModel()
                                 {
-                                    GameBoard = Models.GameBoard.Random(),
+                                    GameBoard = gameBoard ?? Models.GameBoard.Random(),
                                     ServerTime = DateTime.Now,
                                     UserId = userid
                                 };
