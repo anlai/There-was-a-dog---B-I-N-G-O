@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
-using UCDArch.Web.Authentication;
+using Bingo.Web.Helpers;
 
 namespace Bingo.Web.Controllers
 {
@@ -16,7 +16,7 @@ namespace Bingo.Web.Controllers
 
         public ActionResult LogOn()
         {
-            string resultUrl = CASHelper.Login(); //Do the CAS Login
+            string resultUrl = CasHelper.Login(); //Do the CAS Login
 
             if (resultUrl != null)
             {
