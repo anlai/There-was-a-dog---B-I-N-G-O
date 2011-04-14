@@ -93,7 +93,7 @@ function getNewBalls() {
 	    $.get(getNextBallUrl, function (result) {
 
 	        // game still goes on
-	        if (!result.gameover) {
+	        if (!result.gameover && result.ball.Number > 0) {
 	            var txt = result.ball.Letter + result.ball.Number;
 
 	            if ($.inArray(txt, seenNumbers) == -1) {
@@ -102,9 +102,11 @@ function getNewBalls() {
 	            // toss duplicates
 	            //else { alert("duplicate ball " + txt); }
 	        }
-	        else {
+	        else if (result.gameover) {
 	            isgameOver = true;
 	        }
+
+            // do nothing if ball is <= 0
 	    });
 	}
 
