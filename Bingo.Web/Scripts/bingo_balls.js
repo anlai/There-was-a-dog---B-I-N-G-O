@@ -43,14 +43,19 @@
 
 	    // for demo just fill in a bunch of balls
 	    //fillBalls();
-	    setInterval(getNewBalls, 5000);
+	    ballIntervalId = setInterval(getNewBalls, 5000);
 	    //getNewBalls();
 	});
 
 	function getNewBalls() {
 
-
-	    if (seenNumbers.length < 50) {
+	    if (gameOver) {
+	        clearInterval(ballIntervalId);
+	        gameOver();
+	        return;
+	    }
+	    
+	    if (seenNumbers.length < 30) {
 
 	        $.get(getNextBallUrl, function (result) {
 
@@ -66,10 +71,9 @@
 	                //else { alert("duplicate ball " + txt); }
 	            }
 	            else {
-	                alert("game is over");
+	                gameOver = true;
 	            }
 	        });
-
 	    }
 
 	}

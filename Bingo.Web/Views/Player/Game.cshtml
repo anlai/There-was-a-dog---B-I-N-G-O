@@ -14,20 +14,31 @@
     <script src='@Url.Script("bingo_balls.js")'></script>
 
     <script type="text/javascript">
-
-        // server time to sync with
-        var serverTime = new Date('@Model.ServerTime');
-        // indicator if game is over
-        var gameOver = false;
+        //=====================================
+        // Urls
+        //=====================================
         // url for get next ball
         var getNextBallUrl = '@Url.Action("GetNextBall", "Bingo")';
         // url for reporting bingo
         var reportBingoUrl = '@Url.Action("ReportBingo", "Bingo")';
 
+        //=====================================
+        // Timer Variables
+        //=====================================
+        // server time to sync with
+        var serverTime = new Date('@Model.ServerTime');
+        // the timer id for polling for new ball
+        var ballIntervalId;
+
+        //=====================================
+        // Game Variables
+        //=====================================
         // user id
         var userId = '@Model.UserId';
         // game id
         var gameId;
+        // indicator if game is over
+        var gameOver = false;
 
         $(function () {
 
@@ -70,7 +81,10 @@
             gameId = 1;
 
         }
-        
+
+        function gameOver() {
+            alert("game over");
+        }
     </script>
 
     <link href='@Url.Css("Game.css")' rel="stylesheet" type="text/css" />
