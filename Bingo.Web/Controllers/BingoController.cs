@@ -19,16 +19,20 @@ namespace Bingo.Web.Controllers
         [OutputCache(Duration = 5)]
         public JsonNetResult GetNextBall()
         {
-            var rand = new Random();
-            var col = Letters[rand.Next(5)];
+            var currentBall = Db.GameBalls.Where(x => x.Game.InProgress).OrderByDescending(x=>x.Id).FirstOrDefault();
 
-            var ball = new Ball { Letter = col, Number = rand.Next(80) };
+            if (currentBall == null)
+            {
+                var isCurrentGame = Db.Games.Where(x => x.InProgress).Any();
 
-            AllBalls.Add(ball);
+                return isCurrentGame 
+                    ? new JsonNetResult(new {currentBall = new GameBall {Number = -1}, gameover = false}) 
+                    : new JsonNetResult(new {currentBall = new GameBall {Number = -1}, gameover = true});
+            }
 
-            return new JsonNetResult(new { ball, gameover = false });
+            return new JsonNetResult(new { currentBall, gameover = false });
         }
-
+        
         /// <summary>
         /// 
         /// </summary>
@@ -45,9 +49,9 @@ namespace Bingo.Web.Controllers
         public JsonNetResult Initialize()
         {
             var game = Db.Games.Include("GameBalls").Where(a => a.InProgress).FirstOrDefault();
-            var balls = game.GameBalls.Select(a=>new{Letter=a.Letter,Number=a.Number}).ToList();
+            var balls = game.GameBalls.Select(a=>new{a.Letter,a.Number}).ToList();
             
-            return new JsonNetResult(new {balls = balls, gameId=game.Id});
+            return new JsonNetResult(new {balls, gameId=game.Id});
         }
     }
 }
