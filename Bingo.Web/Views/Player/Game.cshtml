@@ -9,9 +9,9 @@
 }
 
 @section AdditionalScripts{
-    <script src='@Url.Script("protoclass.js")'></script>
-    <script src='@Url.Script("box2d.js")'></script>
-    <script src='@Url.Script("bingo_balls.js")'></script>
+    <script src='@Url.Content("~/scripts/protoclass.js")'></script>
+    <script src='@Url.Content("~/scripts/box2d.js")'></script>
+    <script src='@Url.Content("~/scripts/bingo_balls.js")'></script>
 
     <script type="text/javascript">
         //=====================================
@@ -63,14 +63,16 @@
                 autoOpen: false,
                 height: 200, width: 400,
                 buttons: {
-                    "Back to Waiting Room": function () { }
+                    "Back to Waiting Room": function () { 
+                        window.location = '@Url.Action("Index")';
+                    }
                 },
                 open: function (event, ui) { jQuery('.ui-dialog-titlebar-close').hide(); }
             });
 
             initialize();
 
-            gameOver();
+            setTimeout(gameOver, 5000);
         });
 
         // reports bingo to the server and reports back
@@ -140,16 +142,15 @@
         }
 
         function gameOver() {
-
             // clear out the timer
-            clearInteral(ballIntervalId);
+            clearInterval(ballIntervalId);
 
             // show game over dialog
             $("#gameover_container").dialog("open");
         }
     </script>
 
-    <link href='@Url.Css("Game.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/css/Game.css")' rel="stylesheet" type="text/css" />
 }
 
     <div id="new_ball_container" class="ui-corner-all game_box">
