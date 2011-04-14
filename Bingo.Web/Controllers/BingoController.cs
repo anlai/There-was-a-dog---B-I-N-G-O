@@ -12,9 +12,6 @@ namespace Bingo.Web.Controllers
     /// </summary>
     public class BingoController : ApplicationController
     {
-        static readonly string [] Letters = new[] { "B", "I", "N", "G", "O" };
-        static readonly List<Ball> AllBalls = new List<Ball>();
-
         //Cache the result for 5 seconds
         [OutputCache(Duration = 5)]
         public JsonNetResult GetNextBall()
@@ -26,11 +23,11 @@ namespace Bingo.Web.Controllers
                 var isCurrentGame = Db.Games.Where(x => x.InProgress).Any();
 
                 return isCurrentGame 
-                    ? new JsonNetResult(new {currentBall = new GameBall {Number = -1}, gameover = false}) 
-                    : new JsonNetResult(new {currentBall = new GameBall {Number = -1}, gameover = true});
+                    ? new JsonNetResult(new {ball = new GameBall {Number = -1}, gameover = false})
+                    : new JsonNetResult(new { ball = new GameBall { Number = -1 }, gameover = true });
             }
 
-            return new JsonNetResult(new { currentBall, gameover = false });
+            return new JsonNetResult(new { ball = currentBall, gameover = false });
         }
         
         /// <summary>
