@@ -80,7 +80,15 @@
         // load all balls for an inprogress game
         function initialize() {
 
-            $.get(initializeUrl, function (result) { debugger; });
+            $.get(initializeUrl, function (result) {
+
+                $.each(result.balls, function (index, item) {
+                    createBall(item.Letter, item.Number);
+                });
+
+                gameId = result.gameId;
+
+            });
 
         }
 

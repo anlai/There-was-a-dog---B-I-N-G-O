@@ -64,8 +64,7 @@
 	                var txt = result.ball.Letter + result.ball.Number;
 
 	                if ($.inArray(txt, seenNumbers) == -1) {
-	                    seenNumbers.push(txt);
-	                    createBall(10, 0, txt);
+	                    createBall(result.ball.Letter, result.ball.Number);
 	                }
 	                // toss duplicates
 	                //else { alert("duplicate ball " + txt); }
@@ -150,8 +149,15 @@
 	}
 		
 	// create a new ball
-	function createBall(x,y, bingoNumber) {			
-	
+	function createBall(letter, number) {
+
+	    var bingoNumber = letter + number;
+
+	    var x = 10;
+	    var y = 0;
+
+	    seenNumbers.push(bingoNumber);
+
 		var ballSd = new b2CircleDef();
 		ballSd.density = 1
 		ballSd.radius = radius;

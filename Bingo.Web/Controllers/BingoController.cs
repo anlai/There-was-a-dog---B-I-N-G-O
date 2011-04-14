@@ -44,10 +44,10 @@ namespace Bingo.Web.Controllers
 
         public JsonNetResult Initialize()
         {
-            var game = Db.Games.LastOrDefault();
-            var balls = game.GameBalls;
-
-            return new JsonNetResult(new {balls, gameId=game.Id});
+            var game = Db.Games.Include("GameBalls").Where(a => a.InProgress).FirstOrDefault();
+            var balls = game.GameBalls.Select(a=>new{Letter=a.Letter,Number=a.Number}).ToList();
+            
+            return new JsonNetResult(new {balls = balls, gameId=game.Id});
         }
     }
 }
