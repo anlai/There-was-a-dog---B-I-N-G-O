@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Bingo.Web.Helpers;
 using Bingo.Web.Models;
-using UCDArch.Web.ActionResults;
 using System.Linq;
 
 namespace Bingo.Web.Controllers
