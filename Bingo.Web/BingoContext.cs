@@ -25,8 +25,18 @@ namespace Bingo.Web
     {
         protected override void Seed(BingoContext context)
         {
-            var scott = new User {Kerb = "postit", Name = "Scott Kirkland", Board = GameBoard.Random().AllNumsAsString};
-            var alan = new User {Kerb = "anlai", Name = "Alan Lai", Board = GameBoard.Random().AllNumsAsString};
+            var scott = new User
+                            {
+                                Kerb = "postit",
+                                Name = "Scott Kirkland",
+                                Board = GameBoard.CreateSerializedString(GameBoard.Random())
+                            };
+            var alan = new User
+                           {
+                               Kerb = "anlai",
+                               Name = "Alan Lai",
+                               Board = GameBoard.CreateSerializedString(GameBoard.Random())
+                           };
 
             context.Users.Add(scott);
             context.Users.Add(alan);
