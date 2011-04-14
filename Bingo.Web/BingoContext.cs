@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using Bingo.Web.Models;
+using System;
 
 namespace Bingo.Web
 {
@@ -18,5 +19,26 @@ namespace Bingo.Web
         public DbSet<Game> Games { get; set; }
         public DbSet<GameBall> GameBalls { get; set; }
         public DbSet<BingoCall> BingoCalls { get; set; }
+    }
+
+    public class BingoDbInitializer : DropCreateDatabaseAlways<BingoContext>
+    {
+        protected override void Seed(BingoContext context)
+        {
+            var scott = new User {Kerb = "postit", Name = "Scott Kirkland", Board = GameBoard.Random().AllNumsAsString};
+            var alan = new User {Kerb = "anlai", Name = "Alan Lai", Board = GameBoard.Random().AllNumsAsString};
+
+            context.Users.Add(scott);
+            context.Users.Add(alan);
+
+            var game = new Game {InProgress = true, StartDate = DateTime.Now};
+            game.GameBalls.Add(new GameBall {Game = game, Letter = "B", Number = 10, Picked = DateTime.Now});
+            game.GameBalls.Add(new GameBall {Game = game, Letter = "N", Number = 38, Picked = DateTime.Now.AddSeconds(30)});
+            game.GameBalls.Add(new GameBall {Game = game, Letter = "G", Number = 55, Picked = DateTime.Now.AddSeconds(60)});
+
+            context.Games.Add(game);
+
+            context.SaveChanges();
+        }
     }
 }

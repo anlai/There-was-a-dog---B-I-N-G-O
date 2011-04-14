@@ -10,5 +10,6 @@ namespace Bingo.Web.Models
         public User Callee { get; set; }
         public Game Game { get; set; }
         public DateTime CalledAt { get; set; }
+        public bool ValidBoard { get; set; }
     }
 }

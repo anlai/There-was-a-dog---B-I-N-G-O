@@ -37,7 +37,8 @@ namespace Bingo.Web
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BingoContext>());
+            Database.SetInitializer(new BingoDbInitializer());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BingoContext>());
         }
     }
 }
