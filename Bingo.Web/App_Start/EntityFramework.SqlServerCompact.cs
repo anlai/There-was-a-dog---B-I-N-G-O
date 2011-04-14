@@ -8,8 +8,7 @@ namespace Bingo.Web.App_Start {
     public static class EntityFramework_SqlServerCompact {
         public static void Start() {
             //Database.DefaultConnectionFactory = new SqlCeConnectionFactory("System.Data.SqlServerCe.4.0");
-            Database.DefaultConnectionFactory = new SqlConnectionFactory(WebConfigurationManager.ConnectionStrings["Bingo"].ConnectionString);
-
+            Database.DefaultConnectionFactory = new SqlConnectionFactory(WebConfigurationManager.ConnectionStrings["BingoContext"].ConnectionString);
         }
     }
 }

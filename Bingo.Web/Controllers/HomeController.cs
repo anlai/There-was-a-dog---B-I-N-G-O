@@ -20,7 +20,7 @@ namespace Bingo.Web.Controllers
         {
             var info = "Info about this project: ";
 
-            info += "<br/>Connection string: " + WebConfigurationManager.ConnectionStrings["Bingo"].ConnectionString;
+            info += "<br/>Connection string: " + WebConfigurationManager.ConnectionStrings["BingoContext"].ConnectionString;
 #if DEBUG
             info += "<br/>Debug Mode";
 #endif
