@@ -41,12 +41,14 @@
         // game id
         var gameId;
         // indicator if game is over
-        var gameOver = false;
+        var isgameOver = false;
 
         $(function () {
 
             // set the call bingo button style
             $("#btn_CallBingo").button().click(reportBingo);
+
+            $("a.button").button();
 
             // selecting a number
             $(".bingo_cell").click(function () {
@@ -55,7 +57,20 @@
 
             });
 
+            $("#gameover_container").dialog({
+                modal: true,
+                closeOnEscape: false,
+                autoOpen: false,
+                height: 200, width: 400,
+                buttons: {
+                    "Back to Waiting Room": function () { }
+                },
+                open: function (event, ui) { jQuery('.ui-dialog-titlebar-close').hide(); }
+            });
+
             initialize();
+
+            gameOver();
         });
 
         // reports bingo to the server and reports back
@@ -73,7 +88,7 @@
                 dataType: 'json',
                 success: function (result) {
                     // result == true, game over
-                    gameOver = result;
+                    isgameOver = result;
                 }
             });
         }
@@ -125,7 +140,12 @@
         }
 
         function gameOver() {
-            alert("game over");
+
+            // clear out the timer
+            clearInteral(ballIntervalId);
+
+            // show game over dialog
+            $("#gameover_container").dialog("open");
         }
     </script>
 
@@ -188,3 +208,10 @@
 	</div>
   
 
+    <div id="gameover_container" title="Game Over">
+    
+        <p>
+        Someone has gotten BINGO, this game is now over.  Please use the link below to head to the waiting room to find out who won.
+        </p>
+        
+    </div>

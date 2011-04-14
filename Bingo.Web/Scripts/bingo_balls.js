@@ -82,8 +82,8 @@ function initializePhysics() {
 
 function getNewBalls() {
 
-	if (gameOver) {
-	    clearInterval(ballIntervalId);
+	if (isgameOver) {
+	    
 	    gameOver();
 	    return;
 	}
@@ -103,7 +103,7 @@ function getNewBalls() {
 	            //else { alert("duplicate ball " + txt); }
 	        }
 	        else {
-	            gameOver = true;
+	            isgameOver = true;
 	        }
 	    });
 	}
