@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Bingo.Web.Models;
 using UCDArch.Web.ActionResults;
+using System.Linq;
 
 namespace Bingo.Web.Controllers
 {
@@ -43,7 +44,10 @@ namespace Bingo.Web.Controllers
 
         public JsonNetResult Initialize()
         {
-            return new JsonNetResult(AllBalls);
+            var game = Db.Games.LastOrDefault();
+            var balls = game.GameBalls;
+
+            return new JsonNetResult(new {balls, gameId=game.Id});
         }
     }
 }

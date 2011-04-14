@@ -21,6 +21,8 @@
         var getNextBallUrl = '@Url.Action("GetNextBall", "Bingo")';
         // url for reporting bingo
         var reportBingoUrl = '@Url.Action("ReportBingo", "Bingo")';
+        // url for initialize
+        var initializeUrl = '@Url.Action("Initialize", "Bingo")';
 
         //=====================================
         // Timer Variables
@@ -78,7 +80,7 @@
         // load all balls for an inprogress game
         function initialize() {
 
-            gameId = 1;
+            $.get(initializeUrl, function (result) { debugger; });
 
         }
 
