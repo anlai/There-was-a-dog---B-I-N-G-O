@@ -14,7 +14,7 @@ namespace Bingo.Web.Models
             var viewModel = new GameViewModel()
                                 {
                                     GameBoard = gameBoard ?? Models.GameBoard.Random(),
-                                    ServerTime = DateTime.Now,
+                                    ServerTime = DateTime.Now.AddSeconds(5),
                                     UserId = userid
                                 };
 

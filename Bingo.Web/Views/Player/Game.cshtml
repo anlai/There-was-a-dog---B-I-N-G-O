@@ -31,7 +31,8 @@
         var serverTime = new Date('@Model.ServerTime');
         // the timer id for polling for new ball
         var ballIntervalId;
-
+        // interval for polling balls
+        var pollingInterval = 10000;
         //=====================================
         // Game Variables
         //=====================================
@@ -80,6 +81,16 @@
         // load all balls for an inprogress game
         function initialize() {
 
+            // setup physics world
+            initializePhysics();
+
+            initilizeGame();
+
+            initilizePolling();
+        }
+
+        function initilizeGame() {
+            // get existing game information
             $.get(initializeUrl, function (result) {
 
                 $.each(result.balls, function (index, item) {
@@ -89,7 +100,28 @@
                 gameId = result.gameId;
 
             });
+        }
 
+        function initilizePolling() {
+            setTimeout(setPolling, calculateTimeDelta());
+        }
+
+        function calculateTimeDelta() {
+            var date = serverTime;
+
+            // interval is 10 seconds, so wait till next 10 second interval
+            var seconds = 10 - (date.getSeconds() % 10)
+
+            // return seconds converted to milliseconds
+            return seconds * 1000;
+        }
+
+        function setPolling() {
+            // do initial call since we are lined up with the clock
+            getNewBalls();
+
+            // check for a checked in student every 5 minutes
+            ballIntervalId = setInterval(getNewBalls, pollingInterval);
         }
 
         function gameOver() {

@@ -63,7 +63,7 @@ function createBall(letter, number) {
 // Theoretically Private Functions
 //=====================================
 
-$(function () {
+function initializePhysics() {
 	$canvas = $("#canvas");
 	context = $canvas[0].getContext("2d");
 
@@ -78,12 +78,7 @@ $(function () {
 	drawWorld();
 
 	setInterval(updateStage, timeInterval);
-
-	// for demo just fill in a bunch of balls
-	//fillBalls();
-	ballIntervalId = setInterval(getNewBalls, 5000);
-	//getNewBalls();
-});
+}
 
 function getNewBalls() {
 
