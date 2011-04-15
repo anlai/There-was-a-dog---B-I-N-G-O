@@ -152,4 +152,5 @@ a.button, input[type='button'].button
     color: White; 
     font-size: 20px;
     font-weight: bold;
+    box-shadow: 2px 2px 2px #BBBBBB;
 }
