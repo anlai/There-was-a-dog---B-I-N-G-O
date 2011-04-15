@@ -35,16 +35,34 @@ namespace Bingo.Web
                            {
                                Kerb = "anlai",
                                Name = "Alan Lai",
-                               Board = GameBoard.CreateSerializedString(GameBoard.Random())
+                               Board = 	@"7,11,9,10,5
+                                        ,22,26,24,25,20
+                                        ,37,41,0,40,35
+                                        ,52,56,54,55,50
+                                        ,67,71,69,70,65"
                            };
 
             context.Users.Add(scott);
             context.Users.Add(alan);
 
             var game = new Game {InProgress = true, StartDate = DateTime.Now};
-            game.GameBalls.Add(new GameBall {Game = game, Letter = "B", Number = 10, Picked = DateTime.Now});
-            game.GameBalls.Add(new GameBall {Game = game, Letter = "N", Number = 38, Picked = DateTime.Now.AddSeconds(30)});
-            game.GameBalls.Add(new GameBall {Game = game, Letter = "G", Number = 55, Picked = DateTime.Now.AddSeconds(60)});
+
+            // random balls
+            game.GameBalls.Add(new GameBall { Game = game, Letter = "N", Number = 38, Picked = DateTime.Now.AddSeconds(30) });
+            game.GameBalls.Add(new GameBall { Game = game, Letter = "G", Number = 55, Picked = DateTime.Now.AddSeconds(60) });
+
+            // winning balls for scott
+            game.GameBalls.Add(new GameBall { Game = game, Letter = "B", Number = 10, Picked = DateTime.Now});
+            game.GameBalls.Add(new GameBall { Game = game, Letter = "B", Number = 8, Picked = DateTime.Now.AddSeconds(90) });
+            game.GameBalls.Add(new GameBall { Game = game, Letter = "B", Number = 3, Picked = DateTime.Now.AddSeconds(120) });
+            game.GameBalls.Add(new GameBall { Game = game, Letter = "B", Number = 5, Picked = DateTime.Now.AddSeconds(150) });
+            game.GameBalls.Add(new GameBall { Game = game, Letter = "B", Number = 1, Picked = DateTime.Now.AddSeconds(180) });
+
+            // wining balls for all
+            game.GameBalls.Add(new GameBall { Game = game, Letter = "B", Number = 7, Picked = DateTime.Now.AddSeconds(180) });
+            game.GameBalls.Add(new GameBall { Game = game, Letter = "I", Number = 26, Picked = DateTime.Now.AddSeconds(180) });
+            game.GameBalls.Add(new GameBall { Game = game, Letter = "G", Number = 55, Picked = DateTime.Now.AddSeconds(180) });
+            game.GameBalls.Add(new GameBall { Game = game, Letter = "O", Number = 65, Picked = DateTime.Now.AddSeconds(180) });
 
             context.Games.Add(game);
 
