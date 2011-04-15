@@ -52,7 +52,7 @@ namespace Bingo.Web.Controllers
 
             if (validBingo)
             {
-                game.Winner = user;
+                if (game.Winner == null) game.Winner = user;
                 game.InProgress = false;
                 game.EndDate = DateTime.Now;
 
