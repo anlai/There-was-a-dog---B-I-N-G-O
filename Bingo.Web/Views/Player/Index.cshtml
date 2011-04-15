@@ -1,0 +1,113 @@
+﻿@model Bingo.Web.Models.WaitingRoomViewModel
+
+@{
+    ViewBag.Title = "Waiting Area";
+}
+
+@section AdditionalScripts{
+    
+    <link href='@Url.Content("~/css/Game.css")' rel="stylesheet" type="text/css" />
+    <!-- Scoreboard font -->
+    <link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+
+    <style type="text/css">
+        #scoreboard
+        {
+            width: 100%;
+            background-color: Black;
+            color: Green;
+            font-family: 'VT323', arial, serif;
+            font-size: 20px;
+            padding: 1em;
+            margin-top: 1em;
+        }
+        
+        #scoreboard th, #scoreboard td
+        {
+            padding: .25em 1em;
+            text-align: left;
+        }
+        
+        #currentGame
+        {
+            width: 100%;
+            padding: 1em;
+            text-align: center;
+        }
+    </style>
+        
+    <script type="text/javascript">
+        $(function () {
+            $(".button").button();
+
+            setInterval(checkNewGame, 5000);
+        });
+
+    function checkNewGame() {
+        var url = '@Url.Action("HasActiveGame", "Bingo")';
+
+        $.getJSON(url, function (result) {
+            if (result) {
+                $("#activeGame").show();
+                $("#noActiveGame").hide();
+            }
+            else {
+                $("#activeGame").hide();
+                $("#noActiveGame").show();
+            }
+        });
+    }
+    </script>
+}
+
+<div id="currentGame" class="game_box ui-corner-all">
+
+    @{var linkDisplay = Model.Game == null ? "Display:none;" : "Display:block;";
+      var noGameDisplay = Model.Game == null ? "Display:block;" : "Display:none;";
+      }
+
+      <span id="activeGame" style='@linkDisplay'>
+        <a href='@Url.Action("Game")' class="button">There is a current game, click here to join!</a>
+      </span>
+      <span id="noActiveGame" style='@noGameDisplay'>
+        There is no game going on right now.
+      </span>
+
+
+    @*@if (Model.Game != null)
+    {
+        <a href='@Url.Action("Game")' class="button">There is a current game, click here to join!</a>
+    }
+    else
+    { 
+        <text>There is no game going on right now.</text>
+    }
+*@
+
+</div>
+
+
+<div id="scoreboard" class="game_box ui-corner-all">
+    <h3 style="margin-bottom: .5em; font-size: 30px;">Winner Board</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Game Id</th>
+                <th>Winner</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in Model.BingoCalls.OrderByDescending(b => b.CalledAt))
+            { 
+                <tr>
+                    <td>@a.Game.Id</td>
+                    <td>@a.Callee.Name</td>
+                    <td>@a.CalledAt</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

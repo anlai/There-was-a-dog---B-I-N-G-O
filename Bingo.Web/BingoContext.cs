@@ -66,6 +66,14 @@ namespace Bingo.Web
 
             context.Games.Add(game);
 
+            var call1 = new BingoCall() {CalledAt = DateTime.Now, Callee = scott, Game = game, ValidBoard = false};
+            var call2 = new BingoCall() { CalledAt = DateTime.Now.AddSeconds(10), Callee = alan, Game = game, ValidBoard = false };
+            var call3 = new BingoCall() { CalledAt = DateTime.Now.AddSeconds(20), Callee = alan, Game = game, ValidBoard = true };
+
+            context.BingoCalls.Add(call1);
+            context.BingoCalls.Add(call2);
+            context.BingoCalls.Add(call3);
+
             context.SaveChanges();
         }
     }

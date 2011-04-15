@@ -74,5 +74,12 @@ namespace Bingo.Web.Controllers
             
             return new JsonNetResult(new {balls, gameId=game.Id});
         }
+
+        public JsonNetResult HasActiveGame()
+        {
+            var game = Db.Games.Where(a => a.InProgress).SingleOrDefault();
+
+            return new JsonNetResult(game != null);
+        }
     }
 }
