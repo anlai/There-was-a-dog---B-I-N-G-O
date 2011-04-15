@@ -37,6 +37,8 @@ function createBall(letter, number) {
 
 	var bingoNumber = letter + number;
 
+	animateDisplayBall(bingoNumber);
+
 	var x = (Math.random() * 1000) % $canvas.width();
 	if (x < 20) x += 20;
 
@@ -95,6 +97,7 @@ function getNewBalls() {
 	    
 	    gameOver();
 	    return;
+
 	}
 
 	if (seenNumbers.length < 75) {
@@ -108,8 +111,6 @@ function getNewBalls() {
 	            if ($.inArray(txt, seenNumbers) == -1) {
 	                createBall(result.ball.Letter, result.ball.Number);
 	            }
-	            // toss duplicates
-	            //else { alert("duplicate ball " + txt); }
 	        }
 	        else if (result.gameover) {
 	            isgameOver = true;
@@ -122,6 +123,23 @@ function getNewBalls() {
 	    gameOver();
 	}
 
+}
+
+function animateDisplayBall(txt) {
+
+    // drop the old one
+    var container = $("#new_ball_container");
+    var ball = container.find("#new_ball");
+    //ball.effect("drop", { direction: "down" }, 1000);
+    //ball.remove();
+    container.empty();
+
+    //$("#new_ball_container").empty();
+
+    // create the new one
+    var newBall = $("<div>").attr("id", "new_ball");
+    newBall.append($("<span>").attr("id", "number").html(txt));
+    $("#new_ball_container").append(newBall);
 }
 
 // demo that creates 30 balls automatically
