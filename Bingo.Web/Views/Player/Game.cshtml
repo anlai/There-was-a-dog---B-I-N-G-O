@@ -108,12 +108,16 @@
             // get existing game information
             $.get(initializeUrl, function (result) {
 
+                if (result == undefined || result.nogame) {
+                    window.location = '@Url.Action("Index")';
+                }
+
                 var wait = 1000;
 
                 $.each(result.balls, function (index, item) {
 
                     setTimeout(function () { createBall(item.Letter, item.Number); }, index * wait);
-                    
+
                 });
 
                 gameId = result.gameId;
