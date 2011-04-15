@@ -38,7 +38,7 @@ namespace Bingo.Web
             RegisterRoutes(RouteTable.Routes);
 
 #if DEBUG
-            Database.SetInitializer(new BingoDbInitializer());
+            //Database.SetInitializer(new BingoDbInitializer());
 #endif
             //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BingoContext>());
         }
