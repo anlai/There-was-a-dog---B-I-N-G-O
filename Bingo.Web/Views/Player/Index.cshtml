@@ -1,7 +1,7 @@
 ﻿@model Bingo.Web.Models.WaitingRoomViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Waiting Area";
 }
 
 @section AdditionalScripts{
@@ -18,16 +18,48 @@
             color: Green;
             font-family: 'VT323', arial, serif;
             font-size: 20px;
+            padding: 1em;
+            margin-top: 1em;
+        }
+        
+        #scoreboard th, #scoreboard td
+        {
+            padding: .25em 1em;
+            text-align: left;
+        }
+        
+        #currentGame
+        {
+            width: 100%;
+            padding: 1em;
+            text-align: center;
         }
     </style>
         
+    <script type="text/javascript">
+    $(function(){
+        $(".button").button();
+    });
+    </script>
 }
 
-<h2>Index</h2>
+<div id="currentGame" class="game_box ui-corner-all">
 
-<div id="currentGamed"></div>
+    @if (Model.Game != null)
+    {
+        <a href='@Url.Action("Game")' class="button">There is a current game, click here to join!</a>
+    }
+    else
+    { 
+        <text>There is no game going on right now.</text>
+    }
 
-<div id="scoreboard" class="game_box">
+
+</div>
+
+
+<div id="scoreboard" class="game_box ui-corner-all">
+    <h3 style="margin-bottom: .5em; font-size: 30px;">Winner Board</h3>
 
     <table>
         <thead>
@@ -38,7 +70,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var a in Model.BingoCalls)
+            @foreach (var a in Model.BingoCalls.OrderByDescending(b=>b.CalledAt))
             { 
                 <tr>
                     <td>@a.Game.Id</td>

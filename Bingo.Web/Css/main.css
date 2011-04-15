@@ -146,3 +146,10 @@ div.dataTables_wrapper table{margin: 0;clear:both;}
 .DataTables_sort_wrapper{cursor:pointer;}
 .css_right { float:right;}
 .clear { clear: both; }
+
+a.button, input[type='button'].button
+{
+    color: White; 
+    font-size: 20px;
+    font-weight: bold;
+}
