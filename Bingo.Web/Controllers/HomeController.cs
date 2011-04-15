@@ -11,9 +11,13 @@ namespace Bingo.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-
-            return View();
+            var currentUserName = ControllerContext.HttpContext.User.Identity.Name;
+            if (Db.Users.Any(x => x.Kerb == currentUserName))
+            {
+                return this.RedirectToAction("Index", "Player");
+            }
+                
+            return this.RedirectToAction("Create", "User");
         }
 
         public ActionResult About()
