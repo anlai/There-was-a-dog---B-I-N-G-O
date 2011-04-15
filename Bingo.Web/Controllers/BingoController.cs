@@ -50,9 +50,9 @@ namespace Bingo.Web.Controllers
 
             Db.BingoCalls.Add(call);
 
-            if (validBingo)
+            if (validBingo && game.InProgress)
             {
-                if (game.Winner == null) game.Winner = user;
+                game.Winner = user;
                 game.InProgress = false;
                 game.EndDate = DateTime.Now;
 
