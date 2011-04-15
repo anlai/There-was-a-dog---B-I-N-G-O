@@ -1,0 +1,48 @@
+﻿@model Bingo.Web.Models.WaitingRoomViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section AdditionalScripts{
+    
+    <link href='@Url.Content("~/css/Game.css")' rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        #scoreboard
+        {
+            width: 100%;
+            background-color: Black;
+            color: Green;
+        }
+    </style>
+        
+}
+
+<h2>Index</h2>
+
+<div id="currentGamed"></div>
+
+<div id="scoreboard" class="game_box">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Game Id</th>
+                <th>Winner</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in Model.BingoCalls)
+            { 
+                <tr>
+                    <td>@a.Game.Id</td>
+                    <td>@a.Callee.Name</td>
+                    <td>@a.CalledAt</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

@@ -9,6 +9,10 @@ namespace Bingo.Web.Controllers
     /// </summary>
     public class PlayerController : ApplicationController
     {
+        /// <summary>
+        /// The actual game board
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Game()
         {
             var user = Db.Users.Where(a => a.Kerb == User.Identity.Name).SingleOrDefault();
@@ -19,6 +23,15 @@ namespace Bingo.Web.Controllers
             }
 
             return View(GameViewModel.Create(User.Identity.Name, user.GetBoard()));
+        }
+
+        /// <summary>
+        /// Waiting room
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Index()
+        {
+            return View(WaitingRoomViewModel.Create(Db));
         }
     }
 }
