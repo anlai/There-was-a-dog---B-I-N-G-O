@@ -37,8 +37,13 @@ function createBall(letter, number) {
 
 	var bingoNumber = letter + number;
 
-	var x = 10;
+	var x = (Math.random() * 1000) % $canvas.width();
+	if (x < 20) x += 20;
+
 	var y = 0;
+
+	//var x = 10;
+	//var y = 0;
 
 	seenNumbers.push(bingoNumber);
 
