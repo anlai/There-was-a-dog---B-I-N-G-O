@@ -92,8 +92,8 @@ function getNewBalls() {
 	    gameOver();
 	    return;
 	}
-	    
-	if (seenNumbers.length < 30) {
+
+	if (seenNumbers.length < 75) {
 
 	    $.get(getNextBallUrl, function (result) {
 
@@ -111,8 +111,11 @@ function getNewBalls() {
 	            isgameOver = true;
 	        }
 
-            // do nothing if ball is <= 0
+	        // do nothing if ball is <= 0
 	    });
+	}
+	else {
+	    gameOver();
 	}
 
 }
