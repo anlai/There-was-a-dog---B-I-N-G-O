@@ -131,6 +131,7 @@ function animateDisplayBall(txt) {
     var container = $("#new_ball_container");
     var ball = container.find("#new_ball");
     //ball.effect("drop", { direction: "down" }, 1000);
+    //ball.hide("drop", { direction: "down" }, 1000);
     //ball.remove();
     container.empty();
 
@@ -140,6 +141,8 @@ function animateDisplayBall(txt) {
     var newBall = $("<div>").attr("id", "new_ball");
     newBall.append($("<span>").attr("id", "number").html(txt));
     $("#new_ball_container").append(newBall);
+
+    //newBall.show("drop", { direction: "down" }, 1000);
 }
 
 // demo that creates 30 balls automatically
@@ -233,46 +236,60 @@ function drawShapes(shape) {
 
 	switch(shape.m_type)
 	{
-		case b2Shape.e_circleShape:
-		    {
-		        var pos = shape.m_position;
-		        var r = shape.m_radius;
+	    case b2Shape.e_circleShape:
+	        {
+	            var pos = shape.m_position;
+	            var r = shape.m_radius;
 
-		        /*
-                    started working on rotation, no dice here
-		        var rotation = shape.m_body.m_rotation;
+	            /*
+	            started working on rotation, no dice here
+	            var rotation = shape.m_body.m_rotation;
 
-		        if (rotation > 0) {
-		        context.save();
-		        context.rotate(.15); 
-		        }
-		        */
+	            if (rotation > 0) {
+	            context.save();
+	            context.rotate(.15); 
+	            }
+	            */
 
-		        var colorTheme = ballColors[shape.m_proxyId];
+	            var colorTheme = ballColors[shape.m_proxyId];
 
-		        if (colorTheme == undefined) colorTheme = colors[0];
+	            if (colorTheme == undefined) colorTheme = colors[0];
 
-		        context.beginPath();
-		        context.arc(pos.x, pos.y, r, 0, 2 * Math.PI, false);
-		        // radial gradient
-		        var grd = context.createRadialGradient(pos.x - 15, pos.y - 15, 5, pos.x - 15, pos.y - 15, 30);
-		        grd.addColorStop(0, "#7efe1b"); // light green
-		        grd.addColorStop(1, "#459e00"); // dark green
-		        context.fillStyle = grd;
-		        context.fill();
+	            context.beginPath();
+	            context.arc(pos.x, pos.y, r, 0, 2 * Math.PI, false);
+	            // radial gradient
+	            var grd = context.createRadialGradient(pos.x - 15, pos.y - 15, 5, pos.x - 15, pos.y - 15, 30);
+	            grd.addColorStop(0, "#7efe1b"); // light green
+	            grd.addColorStop(1, "#459e00"); // dark green
+	            context.fillStyle = grd;
+	            context.fill();
 
-		        // add the number
-		        var bingoNum = numbers[shape.m_proxyId];
-		        var textx = bingoNum.length > 2 ? pos.x - 22 : pos.x - 15;
-		        if (bingoNum[0] == "I") textx = textx + 5;
-		        var texty = pos.y + 7;
+	            if (hasMickey) {
+	                var ear_r = shape.m_radius / 2;
 
-		        context.fillStyle = colorTheme[0];
-		        context.font = "bold 25px sans-serif";
-		        context.fillText(numbers[shape.m_proxyId], textx, texty);
+	                context.beginPath();
+	                context.arc(pos.x + r, pos.y - 30, ear_r, 0, 2 * Math.PI, false);
+	                context.fillStyle = "#459e00";
+	                context.fill();
 
-		    }
-		    break;
+	                context.beginPath();
+	                context.arc(pos.x - r, pos.y - 30, ear_r, 0, 2 * Math.PI, false);
+	                context.fillStyle = "#459e00";
+                    context.fill();
+	            }
+
+	            // add the number
+	            var bingoNum = numbers[shape.m_proxyId];
+	            var textx = bingoNum.length > 2 ? pos.x - 22 : pos.x - 15;
+	            if (bingoNum[0] == "I") textx = textx + 5;
+	            var texty = pos.y + 7;
+
+	            context.fillStyle = colorTheme[0];
+	            context.font = "bold 25px sans-serif";
+	            context.fillText(numbers[shape.m_proxyId], textx, texty);
+
+	        }
+	        break;
 		case b2Shape.e_polyShape:
 		{
 			var poly = shape;
