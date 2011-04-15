@@ -41,7 +41,7 @@ namespace Bingo.Web.Controllers
         [HttpPost]
         public JsonNetResult ReportBingo(int id, string userId, List<int> numbers)
         {
-            var game = Db.Games.Include("GameBalls").Where(a => a.InProgress).Single();
+            var game = Db.Games.Find(id);
             var user = Db.Users.Where(x=>x.Kerb == userId).Single();
 
             var validBingo = game.ValidateBingo(numbers.ToArray(), user);
@@ -67,6 +67,9 @@ namespace Bingo.Web.Controllers
         public JsonNetResult Initialize()
         {
             var game = Db.Games.Include("GameBalls").Where(a => a.InProgress).SingleOrDefault();
+
+            if (game == null) return new JsonNetResult( new { nogame = true });
+
             var balls = game.GameBalls.Select(a=>new{a.Letter,a.Number}).ToList();
             
             return new JsonNetResult(new {balls, gameId=game.Id});
