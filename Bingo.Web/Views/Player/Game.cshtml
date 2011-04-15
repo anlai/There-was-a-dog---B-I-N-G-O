@@ -63,7 +63,7 @@
                 autoOpen: false,
                 height: 200, width: 400,
                 buttons: {
-                    "Back to Waiting Room": function () { 
+                    "Back to Waiting Room": function () {
                         window.location = '@Url.Action("Index")';
                     }
                 },
@@ -71,7 +71,33 @@
             });
 
             initialize();
+
+            // display debug information
+            $("#timeDiff").html(calculateTimeDelta());
+            $("#debug").show();
+            setInterval(enableDebug, 1000);
         });
+
+        // display timer debug information
+        function enableDebug() {
+
+            serverTime.setSeconds(serverTime.getSeconds() + 1);
+
+            $("#serverTime").html(extractTime(serverTime));
+            $("#clientTime").html(extractTime(new Date()));
+
+            if ((serverTime.getSeconds() % 10) == 0) $("#calculatedPollTime").html(extractTime(serverTime));
+        }
+
+        function extractTime(dateTime) {
+
+            var hour = dateTime.getHours();
+            var minute = dateTime.getMinutes();
+            var second = dateTime.getSeconds();
+
+            return hour + ":" + minute + ":" + second;
+
+        }
 
         // reports bingo to the server and reports back
         function reportBingo() {
@@ -157,7 +183,49 @@
     </script>
 
     <link href='@Url.Content("~/css/Game.css")' rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        #debug
+        {
+            width: 200px;
+            position: absolute;
+            left:0;
+        }
+        
+        #debug ul
+        {
+            list-style: none;
+        }
+    </style>
 }
+
+    <div id="debug" style="display:none;" class="ui-corner-all game_box">
+
+        <ul>
+            <li>
+            <strong>(Estimated)Reported Server Time:</strong>
+            <span id="serverTime"></span>
+            </li>
+            <li>
+            <strong>Client Time:</strong>
+            <span id="clientTime"></span>
+            </li>
+            <li>
+            <strong>Difference:</strong>
+            <span id="timeDiff"></span>
+            </li>
+            <li>
+            <strong>Calculated Poll Time:</strong>
+            <span id="calculatedPollTime"></span>
+            </li>
+            <li>
+            <strong>Last Poll Time:</strong>
+            <span id="pollTime"></span>
+            </li>
+
+        </ul>
+
+    </div>
 
     <div id="new_ball_container" class="ui-corner-all game_box">
         <div id="new_ball"><span id="number">I20</span></div>

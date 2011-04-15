@@ -87,6 +87,10 @@ function initializePhysics() {
 
 function getNewBalls() {
 
+    // debug information
+    $("#pollTime").html(extractTime(serverTime));
+    // does this match expected behavior?
+
 	if (isgameOver) {
 	    
 	    gameOver();
