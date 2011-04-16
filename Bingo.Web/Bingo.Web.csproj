@@ -182,6 +182,7 @@
     <Content Include="Images\bingo_logo.png" />
     <Content Include="Scripts\bingo_balls.js" />
     <Content Include="Scripts\box2d.js" />
+    <Content Include="Scripts\egg.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />

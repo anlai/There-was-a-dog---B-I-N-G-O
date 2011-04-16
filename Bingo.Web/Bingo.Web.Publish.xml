@@ -32,17 +32,18 @@
     <file relUrl="UCDArch.txt" publishTime="04/13/2011 23:28:28" />
     <file relUrl="Css/themes/base/jquery.ui.tabs.css" publishTime="04/13/2011 23:28:28" />
     <file relUrl="Css/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png" publishTime="04/13/2011 23:28:28" />
-    <file relUrl="Scripts/bingo_balls.js" publishTime="04/15/2011 14:26:50" />
+    <file relUrl="Scripts/bingo_balls.js" publishTime="04/15/2011 15:14:23" />
     <file relUrl="Scripts/jquery-1.5.1.js" publishTime="04/13/2011 23:28:28" />
     <file relUrl="Scripts/jquery.unobtrusive-ajax.min.js" publishTime="04/13/2011 23:28:28" />
     <file relUrl="Scripts/jquery-ui-1.8.11.min.js" publishTime="04/13/2011 23:28:28" />
     <file relUrl="Scripts/box2d.js" publishTime="04/13/2011 23:28:28" />
     <file relUrl="Views/Shared/_LogOnPartial.cshtml" publishTime="04/13/2011 23:28:28" />
     <file relUrl="Css/Game.css" publishTime="04/15/2011 12:16:58" />
-    <file relUrl="Views/Player/Game.cshtml" publishTime="04/15/2011 13:43:09" />
+    <file relUrl="Views/Player/Game.cshtml" publishTime="04/15/2011 15:16:04" />
     <file relUrl="Css/images/ui-bg_highlight-soft_0_014a81_1x100.png" publishTime="04/13/2011 23:28:28" />
+    <file relUrl="Scripts/egg.js" publishTime="04/15/2011 15:21:17" />
     <file relUrl="Css/images/ui-bg_highlight-hard_100_f5f3e5_1x100.png" publishTime="04/13/2011 23:28:28" />
-    <file relUrl="bin/Bingo.Web.pdb" publishTime="04/15/2011 13:01:51" />
+    <file relUrl="bin/Bingo.Web.pdb" publishTime="04/15/2011 15:50:12" />
     <file relUrl="Scripts/jquery-ui-1.8.11.js" publishTime="04/13/2011 23:28:28" />
     <file relUrl="Views/Web.config" publishTime="04/15/2011 12:50:58" />
     <file relUrl="Css/themes/base/jquery.ui.button.css" publishTime="04/13/2011 23:28:28" />
@@ -91,7 +92,7 @@
     <file relUrl="Views/Game/Current.cshtml" publishTime="04/13/2011 23:28:28" />
     <file relUrl="bin/EntityFramework.dll" publishTime="04/13/2011 23:28:28" />
     <file relUrl="Css/themes/base/jquery.ui.accordion.css" publishTime="04/13/2011 23:28:28" />
-    <file relUrl="bin/Bingo.Web.dll" publishTime="04/15/2011 13:01:52" />
+    <file relUrl="bin/Bingo.Web.dll" publishTime="04/15/2011 15:50:12" />
     <file relUrl="Views/_ViewStart.cshtml" publishTime="04/13/2011 23:28:28" />
     <file relUrl="Css/images/ui-bg_highlight-hard_95_cccccc_1x100.png" publishTime="04/13/2011 23:28:28" />
     <file relUrl="Scripts/modernizr-1.7.js" publishTime="04/13/2011 23:28:28" />

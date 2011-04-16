@@ -14,9 +14,11 @@ namespace Bingo.Web.Models
         {
 
             var calls = (from call in db.BingoCalls
-                        group call by call.Game.Id
-                        into game select
-                            db.BingoCalls.Where(x => x.Game.Id == game.Key && x.ValidBoard && x.CalledAt == game.Where(y=>y.ValidBoard).Min(y => y.CalledAt)).FirstOrDefault()
+                         where db.BingoCalls.Where(x => x.ValidBoard).Select(x => x.Game.Id).Contains(call.Game.Id)
+                         group call by call.Game.Id
+                             into game
+                             select
+                                 db.BingoCalls.Where(x => x.Game.Id == game.Key && x.ValidBoard && x.CalledAt == game.Where(y => y.ValidBoard).Min(y => y.CalledAt)).FirstOrDefault()
                         ).Select(x=>x.Id).ToList();
 
             var viewModel = new WaitingRoomViewModel()
