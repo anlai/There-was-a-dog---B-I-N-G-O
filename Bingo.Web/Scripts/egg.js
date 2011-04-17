@@ -8,11 +8,40 @@ $(document).keydown(function (e) {
     kkeys.push(e.keyCode);
     if (kkeys.toString().indexOf(konami) >= 0) {
         $(document).unbind('keydown', arguments.callee);
-        // Launch easter egg here  
+
+        debugger;
+
+        // insert a div in the dom
+        $.getScript(egg1, function () {
+
+            $.getScript(egg2, initializeContra);
+
+        });
+
+
+        //initialize the plugin
+
     }
 
     if (kkeys.toString().indexOf(mickey) >= 0) {
         $(document).unbind('keydown', arguments.callee);
         hasMickey = !hasMickey;
     }
-}); 
+});
+
+
+function initializeContra() {
+    var div = $("<div>").attr("id", "jsnes");
+    $("#ball_container").append(div);
+
+    $("#canvas").hide();
+
+    new JSNES({
+        'swfPath': '/swf/',
+        'ui': $('#jsnes').text('').JSNESUI({
+            "Working": [
+                    ['Contra', egg3],
+                ]
+        })
+    });
+}

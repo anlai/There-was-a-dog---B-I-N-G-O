@@ -32,6 +32,9 @@
         // url for messages
         var messageUrl = '@Url.Action("GetMessage", "Bingo")';
 
+        var egg1 = '@Url.Content("~/scripts/jsnes.src.js")';
+        var egg2 = '@Url.Content("~/scripts/dynamicaudio.js")';
+        var egg3 = '@Url.Content("~/roms/contra.nes")';
         //=====================================
         // Timer Variables
         //=====================================
@@ -114,7 +117,7 @@
     </div>
 
     <div id="new_ball_container" class="ui-corner-all game_box">
-        <div id="new_ball"><span id="number">I20</span></div>
+        <div id="new_ball"><span id="number"></span></div>
     </div>
 
 
