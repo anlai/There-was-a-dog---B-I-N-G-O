@@ -11,7 +11,11 @@
 @section AdditionalScripts{
     <script src='@Url.Content("~/scripts/protoclass.js")'></script>
     <script src='@Url.Content("~/scripts/box2d.js")'></script>
+    
+    <script src='@Url.Content("~/scripts/bingo.js")'></script>
     <script src='@Url.Content("~/scripts/bingo_balls.js")'></script>
+    <script src='@Url.Content("~/scripts/bingo_message.js")'></script>
+    <script src='@Url.Content("~/scripts/bingo_debug.js")'></script>
     <script src='@Url.Content("~/scripts/egg.js")'></script>
 
 
@@ -25,6 +29,8 @@
         var reportBingoUrl = '@Url.Action("ReportBingo", "Bingo")';
         // url for initialize
         var initializeUrl = '@Url.Action("Initialize", "Bingo")';
+        // url for messages
+        var messageUrl = '@Url.Action("GetMessage", "Bingo")';
 
         //=====================================
         // Timer Variables
@@ -35,15 +41,7 @@
         var ballIntervalId;
         // interval for polling balls
         var pollingInterval = 10000;
-        //=====================================
-        // Game Variables
-        //=====================================
-        // user id
-        var userId = '@Model.UserId';
-        // game id
-        var gameId;
-        // indicator if game is over
-        var isgameOver = false;
+
 
         $(function () {
 
@@ -74,137 +72,17 @@
 
             initialize();
 
+            initializeMessagePolling();
+
             // display debug information
             $("#timeDiff").html(calculateTimeDelta());
             $("#debug").show();
             setInterval(enableDebug, 1000);
         });
-
-        // reports bingo to the server and reports back
-        function reportBingo() {
-            var selectedNumbers = [];
-            $.each($(".selected"), function (index, item) { selectedNumbers.push(parseInt($(item).html())); });
-
-            var data = { id: gameId, userId: userId, numbers: selectedNumbers };
-
-            $.ajax({
-                url: reportBingoUrl,
-                data: JSON.stringify(data),
-                type: 'POST',
-                contentType: 'application/json',
-                dataType: 'json',
-                success: function (result) {
-                    // result == true, game over
-                    isgameOver = result;
-                }
-            });
-        }
-
-        // load all balls for an inprogress game
-        function initialize() {
-
-            // setup physics world
-            initializePhysics();
-
-            initilizeGame();
-
-            initilizePolling();
-        }
-
-        function initilizeGame() {
-            // get existing game information
-            $.get(initializeUrl, function (result) {
-
-                if (result == undefined || result.nogame) {
-                    window.location = '@Url.Action("Index")';
-                }
-
-                var wait = 1000;
-
-                $.each(result.balls, function (index, item) {
-
-                    setTimeout(function () { createBall(item.Letter, item.Number); }, index * wait);
-
-                });
-
-                gameId = result.gameId;
-
-            });
-        }
-
-        function initilizePolling() {
-            setTimeout(setPolling, calculateTimeDelta());
-        }
-
-        function calculateTimeDelta() {
-            var date = serverTime;
-
-            // interval is 10 seconds, so wait till next 10 second interval
-            var seconds = 10 - (date.getSeconds() % 10)
-
-            // return seconds converted to milliseconds
-            return seconds * 1000;
-        }
-
-        function setPolling() {
-            // do initial call since we are lined up with the clock
-            getNewBalls();
-
-            // check for a checked in student every 5 minutes
-            ballIntervalId = setInterval(getNewBalls, pollingInterval);
-        }
-
-        function gameOver() {
-            // clear out the timer
-            clearInterval(ballIntervalId);
-
-            // show game over dialog
-            $("#gameover_container").dialog("open");
-        }
-
-        //=====================================
-        // Debug Functions
-        //=====================================
-        function enableDebug() {
-
-            serverTime.setSeconds(serverTime.getSeconds() + 1);
-
-            $("#serverTime").html(extractTime(serverTime));
-            $("#clientTime").html(extractTime(new Date()));
-
-            if ((serverTime.getSeconds() % 10) == 0) $("#calculatedPollTime").html(extractTime(serverTime));
-        }
-
-        function extractTime(dateTime) {
-
-            var hour = dateTime.getHours();
-            var minute = dateTime.getMinutes();
-            var second = dateTime.getSeconds();
-
-            return hour + ":" + minute + ":" + second;
-
-        }
     </script>
 
 
     <link href='@Url.Content("~/css/Game.css")' rel="stylesheet" type="text/css" />
-
-    <style type="text/css">
-        #debug
-        {
-            width: 200px;
-            position: absolute;
-            left:0;
-            top: 0;
-            margin-top: 80px;
-            margin-left: 600px;
-        }
-        
-        #debug ul
-        {
-            list-style: none;
-        }
-    </style>
 }
 
     <div id="debug" style="display:none;" class="ui-corner-all game_box">
@@ -287,7 +165,7 @@
 	</div>
   
 	<div id="scoreboard_container" class="ui-corner-all game_box">
-		&nbsp;
+		<ul id="messages"></ul>
 	</div>
   
 

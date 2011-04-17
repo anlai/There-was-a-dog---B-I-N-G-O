@@ -11,7 +11,7 @@
     width: 450px;
     float: left;
     
-    border: 1px solid #327e04;
+    border: 1px solid hsla(97, 94%, 25%, 0);
 }
 .bingo_cell
 {
@@ -26,13 +26,13 @@
 {
     -moz-transform: scale(1.5);
     -webkit-transform: scale(1.5);
-    background-color: #7efe1b;
+    background-color: hsla(94, 99%, 55%, .7);
     cursor: pointer;
 }
 
 .selected
 {
-    background-color: #459e00;
+    background-color: hsla(94, 100%, 31%, .7);
 }
 
 .bingo_header
@@ -66,6 +66,19 @@
     margin-top: 10px;
     height: 90px;
     border: 1px solid #327e04;
+    overflow: auto;
+}
+
+#messages
+{
+    list-style: none;
+    margin: 2em;
+}
+        
+#messages strong
+{
+    display:inline-block;
+    width: 100px; 
 }
 
 #new_ball_container
@@ -102,4 +115,20 @@
     color: White;
     margin-top: 50px;
     display:inline-block;
+}
+
+
+#debug
+{
+    width: 200px;
+    position: absolute;
+    left:0;
+    top: 0;
+    margin-top: 80px;
+    margin-left: 600px;
+}
+        
+#debug ul
+{
+    list-style: none;
 }

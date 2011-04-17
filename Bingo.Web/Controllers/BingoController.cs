@@ -79,18 +79,30 @@ namespace Bingo.Web.Controllers
             if (game == null) return new JsonNetResult( new { nogame = true });
 
             var balls = game.GameBalls.Select(a=>new{a.Letter,a.Number}).ToList();
-            
-            return new JsonNetResult(new {balls, gameId=game.Id});
+
+            var message = Db.Messages.OrderByDescending(a => a.Id).FirstOrDefault();
+            var messageId = message == null ? 0 : message.Id;
+
+            return new JsonNetResult(new {balls, gameId=game.Id, messageId});
         }
 
         /// <summary>
         /// Gets the latest message
         /// </summary>
         /// <param name="id">Id of the last message seen</param>
-        /// <returns>One or more message in an array and last message Id</returns>
+        /// <returns>One or more messages after the Id of the last one</returns>
         public JsonNetResult GetMessage(int id)
         {
-            throw new NotImplementedException();
+            var messages = Db.Messages.Include("User").Where(a => a.Id > id).ToList();
+
+            if (!messages.Any())
+            {
+                return new JsonNetResult(new {id});
+            }
+
+            var maxId = messages.Max(a => a.Id);
+
+            return new JsonNetResult(new {id=maxId, messages});
         }
 
         /// <summary>
