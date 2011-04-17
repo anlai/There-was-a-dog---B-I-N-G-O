@@ -115,6 +115,7 @@
     <Compile Include="Models\GameBall.cs" />
     <Compile Include="Models\GameBoard.cs" />
     <Compile Include="Models\GameViewModel.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\WaitingRoomViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

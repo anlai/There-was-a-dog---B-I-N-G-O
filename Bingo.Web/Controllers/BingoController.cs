@@ -84,6 +84,16 @@ namespace Bingo.Web.Controllers
         }
 
         /// <summary>
+        /// Gets the latest message
+        /// </summary>
+        /// <param name="id">Id of the last message seen</param>
+        /// <returns>One or more message in an array and last message Id</returns>
+        public JsonNetResult GetMessage(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Check to see if there is an active game, to update the waiting room button
         /// </summary>
         /// <returns></returns>

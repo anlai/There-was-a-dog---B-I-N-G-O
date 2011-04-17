@@ -19,6 +19,7 @@ namespace Bingo.Web
         public DbSet<Game> Games { get; set; }
         public DbSet<GameBall> GameBalls { get; set; }
         public DbSet<BingoCall> BingoCalls { get; set; }
+        public DbSet<Message> Messages { get; set; }
     }
 
     public class BingoDbInitializer : DropCreateDatabaseAlways<BingoContext>
