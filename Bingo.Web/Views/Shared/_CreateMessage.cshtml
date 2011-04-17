@@ -1,6 +1,20 @@
 ﻿<script type="text/javascript">
 
-    var createMsgurl = '@Url.Action("CreateMessage", "Game")';
+    var createMsgUrl = '@Url.Action("CreateMessage", "Game")';
+
+    $(function () {
+
+        $("#sendMsg").click(function () {
+
+            var txt = $("#MsgTxt").val();
+
+            $.post(createMsgUrl, {message: txt}, function (result) {
+                if (result) { alert("Message successfully sent!"); }
+                else { alert("There was an error sending your message."); }
+            });
+
+        });
+    });
 
 </script>
 
