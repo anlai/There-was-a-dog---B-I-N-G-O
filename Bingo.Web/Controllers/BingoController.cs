@@ -9,11 +9,15 @@ using System.Linq;
 namespace Bingo.Web.Controllers
 {
     /// <summary>
-    /// Controller for the Bingo class
+    /// Controller for all in game actions (polling functions)
     /// </summary>
     public class BingoController : ApplicationController
     {
-        //Cache the result for 5 seconds
+        /// <summary>
+        /// Function to get the next ball
+        /// </summary>
+        /// <remarks>Cache the result for 5 seconds</remarks>
+        /// <returns>Returns the next ball and if the game is over</returns>
         [OutputCache(Duration = 5)]
         public JsonNetResult GetNextBall()
         {
@@ -32,7 +36,7 @@ namespace Bingo.Web.Controllers
         }
         
         /// <summary>
-        /// 
+        /// A user believes and reports that they have bingo
         /// </summary>
         /// <param name="id">Game Id</param>
         /// <param name="userId">User Id</param>
@@ -64,6 +68,10 @@ namespace Bingo.Web.Controllers
             return new JsonNetResult(validBingo);
         }
 
+        /// <summary>
+        /// Called when a page loads to get a user's client up to date with the current game
+        /// </summary>
+        /// <returns></returns>
         public JsonNetResult Initialize()
         {
             var game = Db.Games.Include("GameBalls").Where(a => a.InProgress).SingleOrDefault();
@@ -75,6 +83,10 @@ namespace Bingo.Web.Controllers
             return new JsonNetResult(new {balls, gameId=game.Id});
         }
 
+        /// <summary>
+        /// Check to see if there is an active game, to update the waiting room button
+        /// </summary>
+        /// <returns></returns>
         public JsonNetResult HasActiveGame()
         {
             var game = Db.Games.Where(a => a.InProgress).SingleOrDefault();
