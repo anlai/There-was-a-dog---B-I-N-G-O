@@ -1,14 +1,10 @@
 ﻿//=====================================
 // Game Variables
 //=====================================
-// user id
-var userId = '@Model.UserId';
 // game id
 var gameId;
 // indicator if game is over
 var isgameOver = false;
-
-
 
 //=====================================
 // Public Functions

@@ -63,6 +63,16 @@ namespace Bingo.Web.Controllers
                 Db.Entry(game).State = EntityState.Modified;
             }
 
+            // add in a broadcast
+            var msg = new Message() {Txt = string.Format("{0} has called bingo.", user.Name)};
+            Db.Messages.Add(msg);
+
+            if (!validBingo)
+            {
+                var msg2 = new Message() { Txt = string.Format("{0} does not have bingo.  Game will continue.", user.Name) };
+                Db.Messages.Add(msg2);
+            }
+
             Db.SaveChanges();
 
             return new JsonNetResult(validBingo);

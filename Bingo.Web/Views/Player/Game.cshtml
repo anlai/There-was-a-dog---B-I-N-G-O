@@ -42,6 +42,8 @@
         // interval for polling balls
         var pollingInterval = 10000;
 
+        // user id
+        var userId = '@Model.UserId';
 
         $(function () {
 
@@ -75,9 +77,7 @@
             initializeMessagePolling();
 
             // display debug information
-            $("#timeDiff").html(calculateTimeDelta());
-            $("#debug").show();
-            setInterval(enableDebug, 1000);
+            initializeDebug();
         });
     </script>
 

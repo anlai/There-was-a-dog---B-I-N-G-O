@@ -7,6 +7,8 @@ function initializeMessagePolling() {
 
 function messagePolling() {
 
+    var gap = 1000;
+
     $.getJSON(messageUrl, { id: messageId }, function (result) {
 
         if (result.id != messageId) {
@@ -15,17 +17,24 @@ function messagePolling() {
 
             $.each(result.messages, function (index, item) {
 
-                var li = $("<li>");
+                setTimeout(function () { createMsg(item); }, gap * index);
 
-                var name = item.User == null ? "System" : item.User.Name;
-                var strong = $("<strong>").html(name);
-
-                li.append(strong);
-                li.append(item.Txt);
-
-                $("#messages").prepend(li);
             });
         }
     });
+
+}
+
+function createMsg(item) {
+
+    var li = $("<li>");
+
+    var name = item.User == null ? "System" : item.User.Name;
+    var strong = $("<strong>").html(name);
+
+    li.append(strong);
+    li.append(item.Txt);
+
+    $("#messages").prepend(li);
 
 }

@@ -20,3 +20,11 @@ function extractTime(dateTime) {
     return hour + ":" + minute + ":" + second;
 
 }
+
+function initializeDebug() {
+
+    $("#timeDiff").html(calculateTimeDelta());
+    $("#debug").show();
+    setInterval(enableDebug, 1000);
+
+}
