@@ -89,6 +89,22 @@ namespace Bingo.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public JsonNetResult CreateMessage(string message)
+        {
+            try
+            {
+                var user = Db.Users.Where(x => x.Kerb == User.Identity.Name).Single();
+                var msg = new Message() { Txt = message, User = user };
 
+                Db.Messages.Add(msg);
+                Db.SaveChanges();
+
+                return new JsonNetResult(true);
+            }
+            catch { }
+
+            return new JsonNetResult(false);
+        }
     }
 }

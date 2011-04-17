@@ -1,0 +1,26 @@
+﻿<script type="text/javascript">
+
+    var createMsgurl = '@Url.Action("CreateMessage", "Game")';
+
+</script>
+
+<style type="text/css">
+    
+    ul{list-style: none;}
+    ul li { margin: .5em 0; }
+    #MsgTxt {width: 400px;}
+</style>
+
+
+<fieldset>
+    <legend>Messages</legend>
+
+    <ul>
+        <li>
+            @Html.TextArea("MsgTxt")
+        </li>
+        <li>
+            <button id="sendMsg">Send Message</button>
+        </li>
+    </ul>
+</fieldset>

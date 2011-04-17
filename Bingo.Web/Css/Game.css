@@ -117,6 +117,23 @@
     display:inline-block;
 }
 
+fieldset
+{
+    padding: 1em;
+}
+
+ul#balls
+{
+}
+
+ul#balls li
+{
+    float: left;
+    margin: .5em 3em;
+    display: inline-block;
+    width: 94px;
+}
+
 
 #debug
 {
@@ -132,3 +149,5 @@
 {
     list-style: none;
 }
+
+

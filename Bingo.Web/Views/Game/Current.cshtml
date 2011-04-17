@@ -5,36 +5,58 @@
     ViewBag.Title = "Current Game";
 }
 
+@section AdditionalScripts{
+
+    <script type="text/javascript">
+        $(function () {
+            $("input[type='submit']").button();
+            $("button").button();
+        });
+    </script>
+}
+
 <h3>Welcome to the Bingo admin page!</h3>
 <p>&nbsp;</p>
 
-@using (Html.BeginForm("PickNewNumber", "Game", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    <input type="submit" value="Pick New Number!" />
-}
+@Html.Partial("_CreateMessage")
 
-<br />
-<p>Numbers already called:</p>
-@if (Model.GameBalls.Count > 0)
-{
-<ul>
-    @foreach (var ball in Model.GameBalls)
+<fieldset>
+    <legend>Pick a New Number</legend>
+    @using (Html.BeginForm("PickNewNumber", "Game", FormMethod.Post))
     {
-        <li>Ball #@ball.Letter@ball.Number</li>
+        @Html.AntiForgeryToken()
+        <input type="submit" value="Pick New Number!" />
     }
-</ul>
-}
-else
-{ 
-    <text>No balls have been picked yet</text>
-}
+</fieldset>
 
-<br />
-<hr />
-@using (Html.BeginForm("CloseGame", "Game", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(x=>x.Id)
-    <input type="submit" value="Close Game (demo only)" />
-}
+<fieldset>
+    <legend>Numbers Already Called</legend>
+
+    @if (Model.GameBalls.Count > 0)
+    {
+    <ul id="balls">
+        @foreach (var ball in Model.GameBalls)
+        {
+            <li>Ball #@ball.Letter@ball.Number</li>
+        }
+    </ul>
+    }
+    else
+    { 
+        <text>No balls have been picked yet</text>
+    }
+
+</fieldset>
+
+<fieldset>
+    <legend>Close Game (Demo Only)</legend>
+
+    @using (Html.BeginForm("CloseGame", "Game", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x=>x.Id)
+        <input type="submit" value="Close Game (demo only)" />
+    }
+
+</fieldset>
+
