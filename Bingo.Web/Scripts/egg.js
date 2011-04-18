@@ -4,12 +4,12 @@ var mickey = "77,73,67,75,69,89"
 var hasMickey = false;
 var hasKonami = false;
 
-$(document).keydown(function (e) {
+$(document).keydown(bindEasterEgg);
+
+function bindEasterEgg(e) {
     kkeys.push(e.keyCode);
     if (kkeys.toString().indexOf(konami) >= 0) {
         $(document).unbind('keydown', arguments.callee);
-
-        debugger;
 
         // insert a div in the dom
         $.getScript(egg1, function () {
@@ -17,17 +17,13 @@ $(document).keydown(function (e) {
             $.getScript(egg2, initializeContra);
 
         });
-
-
-        //initialize the plugin
-
     }
 
     if (kkeys.toString().indexOf(mickey) >= 0) {
         $(document).unbind('keydown', arguments.callee);
         hasMickey = !hasMickey;
     }
-});
+}
 
 
 function initializeContra() {
@@ -44,4 +40,5 @@ function initializeContra() {
                 ]
         })
     });
+
 }
