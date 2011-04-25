@@ -182,6 +182,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\bingo_logo.png" />
     <Content Include="mario.htm" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\bingo.js" />
     <Content Include="Scripts\bingo_balls.js" />
     <Content Include="Scripts\bingo_debug.js" />

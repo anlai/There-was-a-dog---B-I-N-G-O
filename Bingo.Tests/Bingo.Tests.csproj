@@ -67,7 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="ValidateBingoTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +77,9 @@
       <Project>{3F5B2510-09F6-4D99-BAE1-C8ECDAB112F8}</Project>
       <Name>Bingo.Web</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
