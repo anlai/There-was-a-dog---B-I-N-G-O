@@ -103,6 +103,12 @@ namespace Bingo.Web.Controllers
         /// <returns>One or more messages after the Id of the last one</returns>
         public JsonNetResult GetMessage(int id)
         {
+            if (id == -1)
+            {
+                id = Db.Messages.Max(a => a.Id);
+                return new JsonNetResult(new {id});
+            }
+
             var messages = Db.Messages.Include("User").Where(a => a.Id > id).ToList();
 
             if (!messages.Any())

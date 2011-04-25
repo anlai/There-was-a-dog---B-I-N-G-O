@@ -1,5 +1,5 @@
 ﻿// id of last message seen
-var messageId;
+var messageId = -1;
 
 function initializeMessagePolling() {
     setInterval(messagePolling, 5000);
