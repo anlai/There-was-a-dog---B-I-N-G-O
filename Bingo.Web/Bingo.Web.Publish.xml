@@ -14,7 +14,7 @@
     <file relUrl="Css/jquery-ui-1.8.11.custom.css" publishTime="04/17/2011 16:36:41" />
     <file relUrl="Css/themes/base/images/ui-icons_888888_256x240.png" publishTime="04/17/2011 16:36:41" />
     <file relUrl="Css/images/ui-bg_glass_0_ffffff_1x400.png" publishTime="04/17/2011 16:36:41" />
-    <file relUrl="Web.config" publishTime="04/25/2011 10:05:19" />
+    <file relUrl="Web.config" publishTime="04/25/2011 10:10:32" />
     <file relUrl="Css/themes/base/jquery.ui.dialog.css" publishTime="04/17/2011 16:36:41" />
     <file relUrl="Images/bingo_logo.png" publishTime="04/17/2011 16:36:42" />
     <file relUrl="Css/images/ui-bg_flat_0_aaaaaa_40x100.png" publishTime="04/17/2011 16:36:41" />
@@ -38,7 +38,7 @@
     <file relUrl="Scripts/box2d.js" publishTime="04/17/2011 16:36:43" />
     <file relUrl="Views/Shared/_LogOnPartial.cshtml" publishTime="04/17/2011 16:36:43" />
     <file relUrl="Css/Game.css" publishTime="04/19/2011 09:02:19" />
-    <file relUrl="Views/Player/Game.cshtml" publishTime="04/25/2011 09:47:22" />
+    <file relUrl="Views/Player/Game.cshtml" publishTime="04/25/2011 10:10:26" />
     <file relUrl="Css/images/ui-bg_highlight-soft_0_014a81_1x100.png" publishTime="04/17/2011 16:36:41" />
     <file relUrl="Scripts/egg.js" publishTime="04/25/2011 09:47:36" />
     <file relUrl="Css/images/ui-bg_highlight-hard_100_f5f3e5_1x100.png" publishTime="04/17/2011 16:36:41" />
@@ -85,7 +85,7 @@
     <file relUrl="Css/images/ui-bg_highlight-hard_100_fafaf4_1x100.png" publishTime="04/17/2011 16:36:41" />
     <file relUrl="Css/images/ui-icons_cd0a0a_256x240.png" publishTime="04/17/2011 16:36:41" />
     <file relUrl="Css/images/ui-bg_highlight-soft_95_ffedad_1x100.png" publishTime="04/17/2011 16:36:41" />
-    <file relUrl="Views/Web.config" publishTime="04/25/2011 10:05:19" />
+    <file relUrl="Views/Web.config" publishTime="04/25/2011 10:10:32" />
     <file relUrl="Css/images/ui-icons_eeeeee_256x240.png" publishTime="04/17/2011 16:36:41" />
     <file relUrl="bin/Newtonsoft.Json.dll" publishTime="04/17/2011 16:36:41" />
     <file relUrl="Scripts/bingo_message.js" publishTime="04/25/2011 09:49:49" />
