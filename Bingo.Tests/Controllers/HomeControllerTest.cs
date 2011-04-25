@@ -12,7 +12,7 @@ namespace Bingo.Tests.Controllers
     [TestClass]
     public class HomeControllerTest
     {
-        [TestMethod]
+        [TestMethod, Ignore]
         public void Index()
         {
             // Arrange
