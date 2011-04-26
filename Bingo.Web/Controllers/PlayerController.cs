@@ -22,6 +22,8 @@ namespace Bingo.Web.Controllers
                 return RedirectToAction("Index", "Error");
             }
 
+            var message = new Message() {Txt = string.Format("{0} has just joined the game.", user.Name)};
+
             return View(GameViewModel.Create(User.Identity.Name, user.GetBoard()));
         }
 
