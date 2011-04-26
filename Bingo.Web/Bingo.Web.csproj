@@ -181,11 +181,7 @@
     <Content Include="Css\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\bingo_logo.png" />
-<<<<<<< HEAD
-=======
-    <Content Include="mario.htm" />
     <Content Include="robots.txt" />
->>>>>>> 00111f0e3e55e2d6b40965a25e351934a82add15
     <Content Include="Scripts\bingo.js" />
     <Content Include="Scripts\bingo_balls.js" />
     <Content Include="Scripts\bingo_debug.js" />
