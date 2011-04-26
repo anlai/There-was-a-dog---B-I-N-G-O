@@ -183,6 +183,7 @@
     <Content Include="Images\background.png" />
     <Content Include="Images\bingo_logo.png" />
     <Content Include="Images\green-monsters.gif" />
+    <Content Include="Css\la_by_wildfia-d32pxi7.jpg" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\bingo.js" />
     <Content Include="Scripts\bingo_balls.js" />

@@ -154,3 +154,13 @@ a.button, input[type='button'].button
     font-weight: bold;
     box-shadow: 2px 2px 2px #BBBBBB;
 }
+
+
+
+html {
+        background: url(la_by_wildfia-d32pxi7.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
