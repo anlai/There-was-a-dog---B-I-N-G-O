@@ -29,15 +29,19 @@ var seenNumbers = new Array();
 var ballColors = new Array(70);
 var balls = new Array();
 
+
+
 //=====================================
 // Public Functions
 //=====================================
 // create a new ball
-function createBall(letter, number) {
+function createBall(letter, number, initialize) {
+
+    if (initialize == null || initialize == undefined) initialize = false;
 
 	var bingoNumber = letter + number;
 
-	animateDisplayBall(bingoNumber);
+	animateDisplayBall(bingoNumber, initialize);
 
 	var x = (Math.random() * 1000) % $canvas.width();
 	if (x < 20) x += 20;
@@ -125,24 +129,24 @@ function getNewBalls() {
 
 }
 
-function animateDisplayBall(txt) {
+function animateDisplayBall(txt, initialize) {
 
     // drop the old one
     var container = $("#new_ball_container");
     var ball = container.find("#new_ball");
-    //ball.effect("drop", { direction: "down" }, 1000);
-    //ball.hide("drop", { direction: "down" }, 1000);
-    //ball.remove();
     container.empty();
-
-    //$("#new_ball_container").empty();
 
     // create the new one
     var newBall = $("<div>").attr("id", "new_ball");
     newBall.append($("<span>").attr("id", "number").html(txt));
     $("#new_ball_container").append(newBall);
 
-    //newBall.show("drop", { direction: "down" }, 1000);
+    if (!initialize) {
+        // play the sound
+        var audio = $("#moo")[0];
+
+        audio.play();
+    }
 }
 
 // demo that creates 30 balls automatically
@@ -285,7 +289,7 @@ function drawShapes(shape) {
 	            var texty = pos.y + 7;
 
 	            context.fillStyle = colorTheme[0];
-	            context.font = "bold 25px sans-serif";
+	            context.font = "bold 25px serif";
 	            context.fillText(numbers[shape.m_proxyId], textx, texty);
 
 	        }

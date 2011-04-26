@@ -67,7 +67,7 @@ function initilizeGame() {
 
         $.each(result.balls, function (index, item) {
 
-            setTimeout(function () { createBall(item.Letter, item.Number); }, index * wait);
+            setTimeout(function () { createBall(item.Letter, item.Number, true); }, index * wait);
 
         });
 
