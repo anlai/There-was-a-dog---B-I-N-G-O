@@ -18,8 +18,6 @@
     <script src='@Url.Content("~/scripts/bingo_message.js")'></script>
     <script src='@Url.Content("~/scripts/bingo_debug.js")'></script>
     
-
-
     <script type="text/javascript">
         //=====================================
         // Urls
@@ -32,6 +30,8 @@
         var initializeUrl = '@Url.Action("Initialize", "Bingo")';
         // url for messages
         var messageUrl = '@Url.Action("GetMessage", "Bingo")';
+
+        var egg = '@Url.Content("~/Images/green-monsters.gif")';
 
         //=====================================
         // Timer Variables
@@ -85,11 +85,6 @@
 
     <link href='@Url.Content("~/css/Game.css")' rel="stylesheet" type="text/css" />
 
-    <style type="text/css">
-        .nes-screen {display: inline-block; width: 512px; height: 480px;}
-        .nes-zoom {display:none;}
-    </style>
-
 }
 
     <div id="debug" style="display:none;" class="ui-corner-all game_box">
@@ -120,10 +115,11 @@
 
     </div>
 
+    @section Header{
     <div id="new_ball_container" class="ui-corner-all game_box">
         <div id="new_ball"><span id="number"></span></div>
     </div>
-
+    }
 
 	<div id="card_container" class="ui-corner-all game_box">
 

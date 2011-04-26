@@ -180,7 +180,9 @@
     <Content Include="Css\themes\base\jquery.ui.tabs.css" />
     <Content Include="Css\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\background.png" />
     <Content Include="Images\bingo_logo.png" />
+    <Content Include="Images\green-monsters.gif" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\bingo.js" />
     <Content Include="Scripts\bingo_balls.js" />

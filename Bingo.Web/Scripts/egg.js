@@ -11,7 +11,9 @@ function bindEasterEgg(e) {
     if (kkeys.toString().indexOf(konami) >= 0) {
         $(document).unbind('keydown', arguments.callee);
 
-            // do seomthing
+        // do seomthing
+
+        $("html").css("background", "url('" + egg + "')");
 
     }
 

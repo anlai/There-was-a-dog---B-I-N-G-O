@@ -1,6 +1,6 @@
 ﻿.game_box
 {
-    background-color: hsla(0, 0%, 67%, .5);
+    background-color: hsla(0, 0%, 67%, .8);
     box-shadow: 2px 2px 2px #BBBBBB;
     border: 1px solid #327e04;
 }
@@ -85,12 +85,16 @@
 {
     border: 1px solid #327e04;
     height: 125px;
+    width: 150px;
+    float:right;
+    /*
     left: 913px;
     margin-top: 20px;
     position: absolute;
     top: 0;
-    width: 150px;
+    
     z-index: 150;
+    */
 }
 
 #new_ball_container div

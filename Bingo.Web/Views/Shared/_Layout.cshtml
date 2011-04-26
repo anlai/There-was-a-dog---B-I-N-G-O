@@ -41,6 +41,9 @@
         <div id="branding">
             <span class="header">
                 <h1><img src="@Url.Content("~/Images/bingo_logo.png")" alt="Bingo Logo" /></h1>
+
+                @RenderSection("Header", false)
+
                 <div class="col1">
                     <span><img src="@Url.Content("~/Images/logo-caes-long-cap.png")" alt="College of Agricultural &amp; Environmental Sciences" /></span>
                 </div>
