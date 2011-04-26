@@ -53,7 +53,7 @@ ul.copy, ol.copy{margin:0.5em 0 0.5em 5em;}
 /* -------------------- */
 #status_message, #error_message {margin: 10px auto; max-width:600px; text-align:center; padding:10px;}
 #error_message, .field-validation-error  {border:2px solid #C83900; background-color:#fcf0f0;}
-#status_message {border:2px solid #E4C466; background-color:#fbf7eb;}
+#status_message {border:2px solid #E4C466; background-color:#fbf7eb; color:Black;}
 
 /* ---------------------- */
 /*    main links          */
@@ -163,4 +163,6 @@ html {
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        
+        color:White;
 }
