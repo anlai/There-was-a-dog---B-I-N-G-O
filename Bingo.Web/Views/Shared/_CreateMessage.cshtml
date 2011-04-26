@@ -8,8 +8,11 @@
 
             var txt = $("#MsgTxt").val();
 
-            $.post(createMsgUrl, {message: txt}, function (result) {
-                if (result) { alert("Message successfully sent!"); }
+            $.post(createMsgUrl, { message: txt }, function (result) {
+                if (result) {
+                    $("#MsgTxt").val("");
+                    alert("Message successfully sent!");
+                }
                 else { alert("There was an error sending your message."); }
             });
 

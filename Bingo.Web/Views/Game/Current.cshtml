@@ -11,24 +11,46 @@
         $(function () {
             $("input[type='submit']").button();
             $("button").button();
+
+            $("#pickNum").attr("disabled", "disabled");
+
+            setTimeout(enableButton, 30000);
         });
+
+        function enableButton() {
+            $("#pickNum").removeAttr("disabled");
+        }
     </script>
+
+    <style type="text/css">
+        .game_box
+        {
+            margin-bottom: 1em;
+        }
+        
+        fieldset{border:none;}
+    </style>
 }
 
 <h3>Welcome to the Bingo admin page!</h3>
 <p>&nbsp;</p>
 
+<div class="game_box">
 @Html.Partial("_CreateMessage")
+</div>
 
+<div class="game_box">
 <fieldset>
     <legend>Pick a New Number</legend>
     @using (Html.BeginForm("PickNewNumber", "Game", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-        <input type="submit" value="Pick New Number!" />
+        <input id="pickNum" type="submit" value="Pick New Number!" />
     }
 </fieldset>
+</div>
 
+<div class="game_box">
 <fieldset>
     <legend>Numbers Already Called</legend>
 
@@ -47,7 +69,9 @@
     }
 
 </fieldset>
+</div>
 
+<div class="game_box">
 <fieldset>
     <legend>Close Game (Demo Only)</legend>
 
@@ -59,4 +83,4 @@
     }
 
 </fieldset>
-
+</div>
