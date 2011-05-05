@@ -1,7 +1,40 @@
-﻿@model Bingo.Web.Models.Game
+﻿@model Bingo.Web.Models.WaitingRoomViewModel
 
 @{
     ViewBag.Title = "Create New Game";
+}
+
+@section AdditionalScripts{
+    
+    <link href='@Url.Content("~/css/Game.css")' rel="stylesheet" type="text/css" />
+    <!-- Scoreboard font -->
+    <link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+
+    <style type="text/css">
+        #scoreboard
+        {
+            width: 100%;
+            background-color: Black;
+            color: Green;
+            font-family: 'VT323', arial, serif;
+            font-size: 20px;
+            padding: 1em;
+            margin-top: 1em;
+        }
+        
+        #scoreboard th, #scoreboard td
+        {
+            padding: .25em 1em;
+            text-align: left;
+        }
+        
+        #currentGame
+        {
+            width: 100%;
+            padding: 1em;
+            text-align: center;
+        }
+    </style>
 }
 
 <h3>Create a new game!</h3>
@@ -11,3 +44,31 @@
     @Html.AntiForgeryToken()
     <input type="submit" value="Create a new game!" />
 }
+
+<br /><br />
+<h3>Recent Game Results</h3>
+
+<div id="scoreboard" class="game_box ui-corner-all">
+    <h3 style="margin-bottom: .5em; font-size: 30px;">Winner Board</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Game Id</th>
+                <th>Winner</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in Model.BingoCalls.OrderByDescending(b => b.CalledAt))
+            { 
+                <tr>
+                    <td>@a.Game.Id</td>
+                    <td>@a.Callee.Name</td>
+                    <td>@a.CalledAt</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

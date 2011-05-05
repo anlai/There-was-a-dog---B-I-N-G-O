@@ -24,13 +24,31 @@ namespace Bingo.Web.Controllers
         {
             var gameInProgress = CurrentGame();
 
+            if (gameInProgress == null)
+            {
+                return RedirectToAction("GameEnded");
+            }
+
             return View(gameInProgress);
+        }
+
+        public RedirectToRouteResult GameEnded()
+        {
+            Message =
+                "There is no game in progress. One may have recently ended because of a successfull bingo call.";
+
+            return RedirectToAction("NewGame");
         }
 
         [HttpPost]
         public ActionResult PickNewNumber()
         {
             var gameInProgress = CurrentGame();
+
+            if (gameInProgress == null)
+            {
+                return RedirectToAction("GameEnded");
+            }
 
             var rand = new Random();
             var newNumber = rand.Next(1, 75);
@@ -58,7 +76,8 @@ namespace Bingo.Web.Controllers
 
         public ActionResult NewGame()
         {
-            return View(new Game());
+            var waitingRoomViewModel = WaitingRoomViewModel.Create(Db);
+            return View(waitingRoomViewModel);
         }
 
         [HttpPost]
