@@ -9,6 +9,8 @@
 
     <script type="text/javascript">
         $(function () {
+            setInterval(checkNewGame, 5000);
+
             $("input[type='submit']").button();
             $("button").button();
 
@@ -19,6 +21,16 @@
 
         function enableButton() {
             $("#pickNum").removeAttr("disabled");
+        }
+
+        function checkNewGame() {
+            var url = '@Url.Action("HasActiveGame", "Bingo")';
+
+            $.getJSON(url, function (result) {
+                if (result === false) { //No active game
+                    window.location = '@Url.Action("GameEnded")';
+                }
+            });
         }
     </script>
 

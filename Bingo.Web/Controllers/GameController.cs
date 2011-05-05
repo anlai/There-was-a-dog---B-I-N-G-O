@@ -35,7 +35,7 @@ namespace Bingo.Web.Controllers
         public RedirectToRouteResult GameEnded()
         {
             Message =
-                "There is no game in progress. One may have recently ended because of a successfull bingo call.";
+                "There is no game in progress. One may have recently ended because of a successfull bingo call. See the Winner Board for details.";
 
             return RedirectToAction("NewGame");
         }

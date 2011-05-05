@@ -125,11 +125,10 @@ namespace Bingo.Web.Controllers
         /// Check to see if there is an active game, to update the waiting room button
         /// </summary>
         /// <returns></returns>
+        [OutputCache(Duration = 5)]
         public JsonNetResult HasActiveGame()
         {
-            var game = Db.Games.Where(a => a.InProgress).SingleOrDefault();
-
-            return new JsonNetResult(game != null);
+            return new JsonNetResult(Db.Games.Where(x=>x.InProgress).Any());
         }
     }
 }
