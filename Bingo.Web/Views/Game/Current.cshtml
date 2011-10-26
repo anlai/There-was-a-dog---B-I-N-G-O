@@ -42,6 +42,20 @@
         
         fieldset{border:none;}
     </style>
+
+    <script type="text/javascript" src='@Url.Content("~/Scripts/Attendance.js")'></script>
+
+    <script type="text/javascript">
+
+        var waitingUrl = '@Url.Action("GetWaitingAtteandance")';
+        var gameUrl = '@Url.Action("GetGameAtteandance")';
+
+        $(function () {
+            InitializeGameAttendancePolling();
+            InitializeWaitingAttendancePolling();
+        });
+    </script>
+
 }
 
 <h3>Welcome to the Bingo admin page!</h3>
@@ -81,6 +95,35 @@
     }
 
 </fieldset>
+</div>
+
+<div class="game_box">
+
+    <fieldset id="game-attendance">
+    <legend>Game Attendance</legend>
+
+    <table>
+        <thead><tr><th>User</th><th>Check-In Time</th></tr></thead>
+        <tbody>
+        
+        </tbody>
+    </table>
+    </fieldset>
+
+</div>
+
+<div class="game_box">
+
+    <fieldset id="waiting-attendance">
+    <legend>Waiting Room Attendance</legend>
+
+    <table>
+        <thead><tr><th>User</th><th>Check-In Time</th></tr></thead>
+        <tbody>
+        
+        </tbody>
+    </table>
+    </fieldset>
 </div>
 
 <div class="game_box">

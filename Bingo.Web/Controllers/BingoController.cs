@@ -23,9 +23,27 @@ namespace Bingo.Web.Controllers
         {
             var currentBall = Db.GameBalls.Where(x => x.Game.InProgress).OrderByDescending(x=>x.Id).FirstOrDefault();
 
+            var isCurrentGame = Db.Games.Where(x => x.InProgress).Any();
+
+            // check in attendance
+            if (isCurrentGame)
+            {
+                var currentGame = Db.Games.Where(a => a.InProgress).FirstOrDefault();
+
+                var pastattendances = Db.Attandances.Where(a => a.User.Kerb == User.Identity.Name).ToList();
+                foreach (var a in pastattendances) Db.Attandances.Remove(a);
+
+                var user = Db.Users.Where(a => a.Kerb == User.Identity.Name).FirstOrDefault();
+                var attendance = new Attendance() { User = user, Game = currentGame, InGame = true };
+                
+                Db.Attandances.Add(attendance);
+                Db.SaveChanges();                
+            }
+
+
             if (currentBall == null)
             {
-                var isCurrentGame = Db.Games.Where(x => x.InProgress).Any();
+                
 
                 return isCurrentGame 
                     ? new JsonNetResult(new {ball = new GameBall {Number = -1}, gameover = false})
@@ -128,6 +146,15 @@ namespace Bingo.Web.Controllers
         [OutputCache(Duration = 5)]
         public JsonNetResult HasActiveGame()
         {
+            var pastattendances = Db.Attandances.Where(a => a.User.Kerb == User.Identity.Name).ToList();
+            foreach (var a in pastattendances) Db.Attandances.Remove(a);
+
+            // check in attendance
+            var user = Db.Users.Where(a => a.Kerb == User.Identity.Name).FirstOrDefault();
+            var attendance = new Attendance() { User = user, Game = null, InGame = false };
+            Db.Attandances.Add(attendance);
+            Db.SaveChanges();
+
             return new JsonNetResult(Db.Games.Where(x=>x.InProgress).Any());
         }
     }

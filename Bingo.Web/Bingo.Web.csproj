@@ -109,6 +109,7 @@
     <Compile Include="Helpers\IntExtensions.cs" />
     <Compile Include="Helpers\JNR.cs" />
     <Compile Include="Helpers\UserVoiceTokenGenerator.cs" />
+    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Ball.cs" />
     <Compile Include="Models\BingoCall.cs" />
     <Compile Include="Models\DomainObject.cs" />
@@ -187,6 +188,7 @@
     <Content Include="Images\green-monsters.gif" />
     <Content Include="Css\la_by_wildfia-d32pxi7.jpg" />
     <Content Include="robots.txt" />
+    <Content Include="Scripts\Attendance.js" />
     <Content Include="Scripts\bingo.js" />
     <Content Include="Scripts\bingo_balls.js" />
     <Content Include="Scripts\bingo_debug.js" />

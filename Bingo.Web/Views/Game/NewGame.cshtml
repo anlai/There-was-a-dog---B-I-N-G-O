@@ -22,7 +22,7 @@
             margin-top: 1em;
         }
         
-        #scoreboard th, #scoreboard td
+        #scoreboard th, #scoreboard td, #waiting-attendance th, #waiting-attendance td
         {
             padding: .25em 1em;
             text-align: left;
@@ -35,6 +35,17 @@
             text-align: center;
         }
     </style>
+
+    <script type="text/javascript" src='@Url.Content("~/Scripts/Attendance.js")'></script>
+
+    <script type="text/javascript">
+
+        var waitingUrl = '@Url.Action("GetWaitingAtteandance")';
+
+        $(function () {
+            InitializeWaitingAttendancePolling();
+        });
+    </script>
 }
 
 <h3>Create a new game!</h3>
@@ -44,6 +55,20 @@
     @Html.AntiForgeryToken()
     <input type="submit" value="Create a new game!" />
 }
+
+<br/><br/>
+<div id="waiting-attendance" class="game_box ui-corner-all">
+
+    <h3 style="margin-bottom: .5em; font-size: 30px;">Waiting Room Attendance</h3>
+
+    <table>
+        <thead><tr><th>User</th><th>Check-In Time</th></tr></thead>
+        <tbody>
+        
+        </tbody>
+    </table>
+
+</div>
 
 <br /><br />
 <h3>Recent Game Results</h3>

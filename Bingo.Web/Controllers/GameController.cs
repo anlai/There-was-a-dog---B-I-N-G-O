@@ -125,5 +125,34 @@ namespace Bingo.Web.Controllers
 
             return new JsonNetResult(false);
         }
+
+        public JsonNetResult GetGameAtteandance()
+        {
+            var attendances = from a in Db.Attandances
+                              where a.InGame 
+                              group a by a.User into x
+                              select new { Name = x.Key.Name, Update = x.Max(y => y.LastUpdate) };
+
+            // only want people that have checked in in the last 30 seconds.
+            var result = attendances.OrderBy(a => a.Name).ToList();
+            result = result.Where(a => a.Update.AddSeconds(30d) > DateTime.Now).ToList();
+
+            return new JsonNetResult(result.Select(a => new { Name = a.Name, Update = a.Update.ToString("g") }));
+        }
+
+        public JsonNetResult GetWaitingAtteandance()
+        {
+            var attendances = from a in Db.Attandances
+                              where !a.InGame
+                              group a by a.User into x
+                              select new { Name = x.Key.Name, Update = x.Max(y => y.LastUpdate) };
+
+            // only want people that have checked in in the last 30 seconds.
+            var result = attendances.OrderBy(a => a.Name).ToList();
+            result = result.Where(a => a.Update.AddSeconds(30d) > DateTime.Now).ToList();
+
+            return new JsonNetResult(result.Select(a => new { Name = a.Name, Update = a.Update.ToString("g") }));
+        }
+
     }
 }

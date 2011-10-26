@@ -20,6 +20,7 @@ namespace Bingo.Web.Models
 
         public ICollection<GameBall> GameBalls { get; set; }
         public ICollection<BingoCall> BingoCalls { get; set; }
+        public ICollection<Attendance> Attendances { get; set; }
 
         public bool ValidateBingo(int[] chosenBalls, User user)
         {
