@@ -25,32 +25,34 @@ namespace Bingo.Web.Controllers
 
             var isCurrentGame = Db.Games.Where(x => x.InProgress).Any();
 
-            // check in attendance
-            if (isCurrentGame)
+            try
             {
-                var currentGame = Db.Games.Where(a => a.InProgress).FirstOrDefault();
+                // check in attendance
+                if (isCurrentGame)
+                {
+                    var currentGame = Db.Games.Where(a => a.InProgress).FirstOrDefault();
 
-                var pastattendances = Db.Attandances.Where(a => a.User.Kerb == User.Identity.Name).ToList();
-                foreach (var a in pastattendances) Db.Attandances.Remove(a);
+                    var pastattendances = Db.Attandances.Where(a => a.User.Kerb == User.Identity.Name).ToList();
+                    foreach (var a in pastattendances) Db.Attandances.Remove(a);
 
-                var user = Db.Users.Where(a => a.Kerb == User.Identity.Name).FirstOrDefault();
-                var attendance = new Attendance() { User = user, Game = currentGame, InGame = true };
-                
-                Db.Attandances.Add(attendance);
-                Db.SaveChanges();                
+                    var user = Db.Users.Where(a => a.Kerb == User.Identity.Name).FirstOrDefault();
+                    var attendance = new Attendance() { User = user, Game = currentGame, InGame = true };
+
+                    Db.Attandances.Add(attendance);
+                    Db.SaveChanges();
+                }    
             }
+            catch(Exception){}
 
 
             if (currentBall == null)
             {
-                
-
                 return isCurrentGame 
                     ? new JsonNetResult(new {ball = new GameBall {Number = -1}, gameover = false})
                     : new JsonNetResult(new { ball = new GameBall { Number = -1 }, gameover = true });
             }
 
-            return new JsonNetResult(new { ball = currentBall, gameover = false });
+            return new JsonNetResult(new { ball = new GameBall(){Id = currentBall.Id, Letter = currentBall.Letter, Number = currentBall.Number, Picked = currentBall.Picked}, gameover = false });
         }
         
         /// <summary>
