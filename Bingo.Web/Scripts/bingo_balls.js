@@ -8,7 +8,7 @@ var $canvas, context;
 var height, width;
 	
 // default radius of the balls
-var radius = 30;
+var radius = 50;
 	
 // [textcolor,backgroundcolor]
 var colors = [["#ffffff", "#014a81"]];

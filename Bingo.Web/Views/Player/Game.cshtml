@@ -120,57 +120,59 @@
         <div id="new_ball"><span id="number"></span></div>
     </div>
     }
-
-	<div id="card_container" class="ui-corner-all game_box">
-
-        <table class="noicon">
-            <thead>
-                <tr>
-                <th class="bingo_header">B</th>
-                <th class="bingo_header">I</th>
-                <th class="bingo_header">N</th>
-                <th class="bingo_header">G</th>
-                <th class="bingo_header">O</th>
-                </tr>
-            </thead>
-            <tbody>
-		        @for (var i = 0; i < Model.GameBoard.BCol.Length; i++)
-                { 
-                <tr>
-                <td class="b bingo_cell">@Model.GameBoard.BCol[i]</td>
-                <td class="i bingo_cell">@Model.GameBoard.ICol[i]</td>
-                @if (Model.GameBoard.NCol[i] == 0)
-                {
-                    <td class="n bingo_cell">Free</td>
-                }
-                else
-                { 
-                    <td class="n bingo_cell">@Model.GameBoard.NCol[i]</td>
-                }
-                
-                <td class="g bingo_cell">@Model.GameBoard.GCol[i]</td>
-                <td class="o bingo_cell">@Model.GameBoard.OCol[i]</td>
-                </tr>
-                }            
-            </tbody>
-        </table>
+    
 
 
-
-	</div>
- 
 	<div id="ball_container" class="ui-corner-all game_box">
-	    <canvas id="canvas" width="549" height="325" />
+        @*<canvas id="canvas" width="549" height="325" />*@
+        <canvas id="canvas" width="1000" height="500" />
 	</div>
+
+    <div style="display:none;">
+        <div id="card_container" class="ui-corner-all game_box">
+
+            <table class="noicon">
+                <thead>
+                    <tr>
+                        <th class="bingo_header">B</th>
+                        <th class="bingo_header">I</th>
+                        <th class="bingo_header">N</th>
+                        <th class="bingo_header">G</th>
+                        <th class="bingo_header">O</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (var i = 0; i < Model.GameBoard.BCol.Length; i++)
+                    { 
+                        <tr>
+                            <td class="b bingo_cell">@Model.GameBoard.BCol[i]</td>
+                            <td class="i bingo_cell">@Model.GameBoard.ICol[i]</td>
+                            @if (Model.GameBoard.NCol[i] == 0)
+                            {
+                                <td class="n bingo_cell">Free</td>
+                            }
+                            else
+                            { 
+                                <td class="n bingo_cell">@Model.GameBoard.NCol[i]</td>
+                            }
+                
+                            <td class="g bingo_cell">@Model.GameBoard.GCol[i]</td>
+                            <td class="o bingo_cell">@Model.GameBoard.OCol[i]</td>
+                        </tr>
+                    }            
+                </tbody>
+            </table>
+        </div>
+    
+	    <div id="bingo_call_container" class="ui-corner-all game_box">
+		    <input type="button" value="I Got BINGO!" class="button" id="btn_CallBingo"/>
+	    </div>
   
-	<div id="bingo_call_container" class="ui-corner-all game_box">
-		<input type="button" value="I Got BINGO!" class="button" id="btn_CallBingo"/>
-	</div>
-  
-	<div id="scoreboard_container" class="ui-corner-all game_box">
-		<ul id="messages"></ul>
-	</div>
-  
+        <div id="scoreboard_container" class="ui-corner-all game_box">
+            <ul id="messages"></ul>
+        </div>
+
+    </div>
 
     <div id="gameover_container" title="Game Over">
     
