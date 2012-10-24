@@ -134,18 +134,27 @@ function animateDisplayBall(txt, initialize) {
     // drop the old one
     var container = $("#new_ball_container");
     var ball = container.find("#new_ball");
-    container.empty();
 
-    // create the new one
-    var newBall = $("<div>").attr("id", "new_ball");
-    newBall.append($("<span>").attr("id", "number").html(txt));
-    $("#new_ball_container").append(newBall);
+    ball.find('#number').html(txt.substring(1));
 
-    if (!initialize) {
-        // play the sound
-        var audio = $("#moo")[0];
+    $(".newball-icon").hide();
 
-        audio.play();
+    switch (txt[0]) {
+        case "B":
+            container.find("#zombie").show();
+            break;
+        case "I":
+            container.find("#zombie").show();
+            break;
+        case "N":
+            container.find("#zombie").show();
+            break;
+        case "G":
+            container.find("#zombie").show();
+            break;
+        case "O":
+            container.find("#zombie").show();
+            break;
     }
 }
 
