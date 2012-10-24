@@ -98,6 +98,15 @@
     */
 }
 
+.newball_img {
+    background-repeat: no-repeat; 
+    background-size: 125px 100%; 
+    height: 125px;
+    margin-left: 10px;
+    display: none;
+}
+
+/*
 #new_ball_container div
 {       
      background-color: #67b021;
@@ -112,14 +121,16 @@
      text-align: center;
      
 }
+*/
 
-#new_ball_container #number
+#new_ball_container .number
 {
     font-size: 50px;
     font-weight: bold;
     color: White;
     margin-top: 50px;
     display:inline-block;
+    margin-left: 20px;
 }
 
 fieldset

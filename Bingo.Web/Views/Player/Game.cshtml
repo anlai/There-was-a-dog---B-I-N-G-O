@@ -1,12 +1,6 @@
-﻿@{
-    ViewBag.Title = "Game";
-}
+﻿
 
 ﻿@model Bingo.Web.Models.GameViewModel
-
-@{
-    ViewBag.Title = "Game";
-}
 
 @section AdditionalScripts{
     <script src='@Url.Content("~/scripts/protoclass.js")'></script>
@@ -76,6 +70,10 @@
                 open: function (event, ui) { jQuery('.ui-dialog-titlebar-close').hide(); }
             });
 
+            loadImage("ghost");
+            loadImage("mummy");
+            loadImage("skull");
+            loadImage("vampire");
             loadImage("zombie");
 
             initialize();
@@ -89,7 +87,7 @@
         function loadImage(name) {
             images[name] = new Image();
             images[name].src = '@Url.Content("~/images/icons/")';
-            images[name].src = images[name].src + name + '.jpg';
+            images[name].src = images[name].src + name + '.png';
             
         }
 
@@ -130,9 +128,26 @@
 
     @section Header{
     <div id="new_ball_container" class="ui-corner-all game_box">
-        <div id="new_ball">
-            <img id="zombie" class="newball-icon" src="@Url.Content("~/Images/Icons/zombie.jpg")"/>
+        @*<div id="new_ball">
+            <img id="ghost" class="newball-icon" src="@Url.Content("~/Images/Icons/ghost.jpg")"/>
             <span id="number"></span>
+        </div>*@
+        
+        
+        <div id="ghost" style="background-image: url('@Url.Content("~/Images/Icons/ghost.png")');" class="newball_img">
+            <span class="number"></span>
+        </div>
+        <div id="mummy" style="background-image: url('@Url.Content("~/Images/Icons/mummy.png")');" class="newball_img">
+            <span class="number"></span>
+        </div>
+        <div id="skull" style="background-image: url('@Url.Content("~/Images/Icons/skull.png")');" class="newball_img">
+            <span class="number"></span>
+        </div>
+        <div id="vampire" style="background-image: url('@Url.Content("~/Images/Icons/vampire.png")');" class="newball_img">
+            <span class="number"></span>
+        </div>
+        <div id="zombie" style="background-image: url('@Url.Content("~/Images/Icons/zombie.png")');" class="newball_img">
+            <span class="number"></span>
         </div>
     </div>
     }

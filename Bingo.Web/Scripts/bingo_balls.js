@@ -133,27 +133,31 @@ function animateDisplayBall(txt, initialize) {
 
     // drop the old one
     var container = $("#new_ball_container");
-    var ball = container.find("#new_ball");
+    //var ball = container.find("#new_ball");
+    //ball.find('#number').html(txt.substring(1));
 
-    ball.find('#number').html(txt.substring(1));
-
-    $(".newball-icon").hide();
+    $(".newball_img").hide();
 
     switch (txt[0]) {
         case "B":
-            container.find("#zombie").show();
+            container.find("#ghost").show();
+            container.find("#ghost .number").html(txt.substring(1));
             break;
         case "I":
-            container.find("#zombie").show();
+            container.find("#mummy").show();
+            container.find("#mummy .number").html(txt.substring(1));
             break;
         case "N":
-            container.find("#zombie").show();
+            container.find("#skull").show();
+            container.find("#skull .number").html(txt.substring(1));
             break;
         case "G":
-            container.find("#zombie").show();
+            container.find("#vampire").show();
+            container.find("#vampire .number").html(txt.substring(1));
             break;
         case "O":
             container.find("#zombie").show();
+            container.find("#zombie .number").html(txt.substring(1));
             break;
     }
 }
@@ -297,35 +301,25 @@ function drawShapes(shape) {
 	            if (bingoNum[0] == "I") textx = textx + 5;
 	            var texty = pos.y + 7;
 
-	            context.fillStyle = colorTheme[0];
-	            context.font = "bold 25px serif";
-	            //context.fillText(numbers[shape.m_proxyId], textx, texty);
+	            var imgX = textx - 28;
+	            var imgY = texty - 58;
+	            var img;
 
-	            var tmpNum = numbers[shape.m_proxyId].substring(1);
-	            context.fillText(tmpNum, textx + 35, texty);
-
-                switch (bingoNum[0]) {
-	                case "B":
-	                    // add in an image
-	                    context.drawImage(images["zombie"], textx - 10, texty - 30);
-	                    break;
-	                case "I":
-	                    // add in an image
-	                    context.drawImage(images["zombie"], textx - 10, texty - 30);
-	                    break;
-	                case "N":
-	                    // add in an image
-	                    context.drawImage(images["zombie"], textx - 10, texty - 30);
-	                    break;
-	                case "G":
-	                    // add in an image
-	                    context.drawImage(images["zombie"], textx - 10, texty - 30);
-	                    break;
-	                case "O":
-	                    // add in an image
-	                    context.drawImage(images["zombie"], textx - 10, texty - 30);
-	                    break;
+	            switch (bingoNum[0]) {
+	                case "B": img = images["ghost"]; imgX = imgX - 5; break;
+	                case "I": img = images["mummy"]; imgX = imgX - 5; break;
+	                case "N": img = images["skull"]; break;
+	                case "G": img = images["vampire"]; break;
+	                case "O": img = images["zombie"]; break;
 	            }
+
+	            context.drawImage(img, imgX, imgY);
+
+	            context.fillStyle = colorTheme[0];
+	            context.font = "bold 65px serif";
+	            //context.fillText(numbers[shape.m_proxyId], textx, texty);
+	            var tmpNum = numbers[shape.m_proxyId].substring(1);
+	            context.fillText(tmpNum, textx - 10, texty + 10);
 	        }
 	        break;
 		case b2Shape.e_polyShape:

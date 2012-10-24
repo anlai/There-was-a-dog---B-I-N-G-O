@@ -185,10 +185,16 @@
     <Content Include="Css\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\background.png" />
+    <Content Include="Images\bingo-title.jpg" />
     <Content Include="Images\bingo_logo.png" />
     <Content Include="Images\green-monsters.gif" />
     <Content Include="Css\la_by_wildfia-d32pxi7.jpg" />
-    <Content Include="Images\Icons\zombie.jpg" />
+    <Content Include="Images\Icons\ghost.png" />
+    <Content Include="Images\Icons\mummy.png" />
+    <Content Include="Images\Icons\skull.png" />
+    <Content Include="Images\Icons\vampire.png" />
+    <Content Include="Images\Icons\zombie.png" />
+    <Content Include="Css\zombie_wallpaper1.jpeg" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\Attendance.js" />
     <Content Include="Scripts\bingo.js" />
