@@ -279,7 +279,7 @@ function drawShapes(shape) {
 	                context.beginPath();
 	                context.arc(pos.x - r, pos.y - 30, ear_r, 0, 2 * Math.PI, false);
 	                context.fillStyle = "#459e00";
-                    context.fill();
+	                context.fill();
 	            }
 
 	            // add the number
@@ -290,8 +290,33 @@ function drawShapes(shape) {
 
 	            context.fillStyle = colorTheme[0];
 	            context.font = "bold 25px serif";
-	            context.fillText(numbers[shape.m_proxyId], textx, texty);
+	            //context.fillText(numbers[shape.m_proxyId], textx, texty);
 
+	            var tmpNum = numbers[shape.m_proxyId].substring(1);
+	            context.fillText(tmpNum, textx + 35, texty);
+
+                switch (bingoNum[0]) {
+	                case "B":
+	                    // add in an image
+	                    context.drawImage(images["zombie"], textx - 10, texty - 30);
+	                    break;
+	                case "I":
+	                    // add in an image
+	                    context.drawImage(images["zombie"], textx - 10, texty - 30);
+	                    break;
+	                case "N":
+	                    // add in an image
+	                    context.drawImage(images["zombie"], textx - 10, texty - 30);
+	                    break;
+	                case "G":
+	                    // add in an image
+	                    context.drawImage(images["zombie"], textx - 10, texty - 30);
+	                    break;
+	                case "O":
+	                    // add in an image
+	                    context.drawImage(images["zombie"], textx - 10, texty - 30);
+	                    break;
+	            }
 	        }
 	        break;
 		case b2Shape.e_polyShape:

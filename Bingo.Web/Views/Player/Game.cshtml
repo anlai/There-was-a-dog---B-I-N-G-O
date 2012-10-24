@@ -46,6 +46,9 @@
         // user id
         var userId = '@Model.UserId';
 
+        // Images
+        var images = {};
+
         $(function () {
 
             // set the call bingo button style
@@ -73,6 +76,8 @@
                 open: function (event, ui) { jQuery('.ui-dialog-titlebar-close').hide(); }
             });
 
+            loadImage("zombie");
+
             initialize();
 
             initializeMessagePolling();
@@ -80,6 +85,14 @@
             // display debug information
             //initializeDebug();
         });
+        
+        function loadImage(name) {
+            images[name] = new Image();
+            images[name].src = '@Url.Content("~/images/icons/")';
+            images[name].src = images[name].src + name + '.jpg';
+            
+        }
+
     </script>
 
 

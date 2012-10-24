@@ -187,6 +187,7 @@
     <Content Include="Images\bingo_logo.png" />
     <Content Include="Images\green-monsters.gif" />
     <Content Include="Css\la_by_wildfia-d32pxi7.jpg" />
+    <Content Include="Images\Icons\zombie.jpg" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\Attendance.js" />
     <Content Include="Scripts\bingo.js" />
