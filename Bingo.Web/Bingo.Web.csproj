@@ -191,6 +191,7 @@
     <Content Include="Css\la_by_wildfia-d32pxi7.jpg" />
     <Content Include="Images\Icons\ghost.png" />
     <Content Include="Images\Icons\mummy.png" />
+    <Content Include="Images\Icons\pumpkin.png" />
     <Content Include="Images\Icons\skull.png" />
     <Content Include="Images\Icons\vampire.png" />
     <Content Include="Images\Icons\zombie.png" />

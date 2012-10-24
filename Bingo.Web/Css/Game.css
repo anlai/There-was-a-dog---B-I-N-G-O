@@ -125,12 +125,17 @@
 
 #new_ball_container .number
 {
-    font-size: 50px;
+    font-size: 60px;
     font-weight: bold;
     color: White;
     margin-top: 50px;
     display:inline-block;
-    margin-left: 20px;
+    margin-left: 25px;
+    color: #FF9900;
+}
+
+#vampire .number {
+    color: #119900;
 }
 
 fieldset

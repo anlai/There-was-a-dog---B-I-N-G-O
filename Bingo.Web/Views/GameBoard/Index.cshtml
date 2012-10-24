@@ -10,52 +10,64 @@
 <head>
     <title>CA&ES CRU Halloween Bingo</title>
     
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
+
     <style type="text/css">
-        table {}
-        table td, table th {
-             padding: 1em;
-             border: 1px solid black;
+        .table td, .table th {
+                text-align: center;
+                /* Valid:
+                 * baseline, sub, super, top, text-top, middle,
+                 * bottom, text-bottom, length, or a value in percentage
+                 */
+                vertical-align: text-top;
+            padding: .5em;
+
+            font-size: 40px;
+            font-weight: bold;
         }
         
     </style>
 
 </head>
-<body>
-    <div>
-        <div id="card_container" class="ui-corner-all game_box">
+    <body>
+        
+        <img src="@Url.Content("~/Images/bingo-title.jpg")" style="margin: 1em 0;"/>
 
-            <table class="noicon" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th class="bingo_header"><img src="@Url.Content("~/Images/Icons/ghost.png")"></th>
-                        <th class="bingo_header"><img src="@Url.Content("~/Images/Icons/mummy.png")"></th>
-                        <th class="bingo_header"><img src="@Url.Content("~/Images/Icons/skull.png")"></th>
-                        <th class="bingo_header"><img src="@Url.Content("~/Images/Icons/vampire.png")"></th>
-                        <th class="bingo_header"><img src="@Url.Content("~/Images/Icons/zombie.png")"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (var i = 0; i < Model.BCol.Length; i++)
-                    { 
+        <div>
+            <div id="card_container" class="ui-corner-all game_box">
+
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td class="b bingo_cell">@Model.BCol[i]</td>
-                            <td class="i bingo_cell">@Model.ICol[i]</td>
-                            @if (Model.NCol[i] == 0)
-                            {
-                                <td class="n bingo_cell">Free</td>
-                            }
-                            else
-                            { 
-                                <td class="n bingo_cell">@Model.NCol[i]</td>
-                            }
-                
-                            <td class="g bingo_cell">@Model.GCol[i]</td>
-                            <td class="o bingo_cell">@Model.OCol[i]</td>
+                            <th class="bingo_header"><img src="@Url.Content("~/Images/Icons/ghost.png")"></th>
+                            <th class="bingo_header"><img src="@Url.Content("~/Images/Icons/mummy.png")"></th>
+                            <th class="bingo_header"><img src="@Url.Content("~/Images/Icons/skull.png")"></th>
+                            <th class="bingo_header"><img src="@Url.Content("~/Images/Icons/vampire.png")"></th>
+                            <th class="bingo_header"><img src="@Url.Content("~/Images/Icons/zombie.png")"></th>
                         </tr>
-                    }            
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @for (var i = 0; i < Model.BCol.Length; i++)
+                        { 
+                            <tr>
+                                <td class="b bingo_cell">@Model.BCol[i]</td>
+                                <td class="i bingo_cell">@Model.ICol[i]</td>
+                                @if (Model.NCol[i] == 0)
+                                {
+                                    <td class="n bingo_cell" style="padding: 0;"><img src="@Url.Content("~/Images/Icons/pumpkin.png")" style="width: 70px; height: 70px;"/></td>
+                                }
+                                else
+                                { 
+                                    <td class="n bingo_cell">@Model.NCol[i]</td>
+                                }
+                
+                                <td class="g bingo_cell">@Model.GCol[i]</td>
+                                <td class="o bingo_cell">@Model.OCol[i]</td>
+                            </tr>
+                        }            
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

@@ -11,7 +11,7 @@ var height, width;
 var radius = 50;
 	
 // [textcolor,backgroundcolor]
-var colors = [["#ffffff", "#014a81"]];
+var colors = [["#FF9900;", "#014a81", "#119900"]];
 	
 // frame rate variables
 var fps = 75;
@@ -305,17 +305,19 @@ function drawShapes(shape) {
 	            var imgY = texty - 58;
 	            var img;
 
+	            context.fillStyle = colorTheme[0];
+
 	            switch (bingoNum[0]) {
 	                case "B": img = images["ghost"]; imgX = imgX - 5; break;
 	                case "I": img = images["mummy"]; imgX = imgX - 5; break;
 	                case "N": img = images["skull"]; break;
-	                case "G": img = images["vampire"]; break;
+	                case "G": img = images["vampire"]; context.fillStyle = colorTheme[2]; break;
 	                case "O": img = images["zombie"]; break;
 	            }
 
 	            context.drawImage(img, imgX, imgY);
 
-	            context.fillStyle = colorTheme[0];
+
 	            context.font = "bold 65px serif";
 	            //context.fillText(numbers[shape.m_proxyId], textx, texty);
 	            var tmpNum = numbers[shape.m_proxyId].substring(1);
