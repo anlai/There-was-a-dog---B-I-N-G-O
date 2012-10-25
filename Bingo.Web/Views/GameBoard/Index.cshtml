@@ -20,13 +20,18 @@
                  * bottom, text-bottom, length, or a value in percentage
                  */
                 vertical-align: text-top;
-            padding: .5em;
 
             font-size: 40px;
             font-weight: bold;
         }
         
+        .table td.extra-height {
+            padding: 1em;
+        }
+        
     </style>
+
+
 
 </head>
     <body>
@@ -49,8 +54,8 @@
                     <tbody>
                         @for (var i = 0; i < Model.BCol.Length; i++)
                         { 
-                            <tr>
-                                <td class="b bingo_cell">@Model.BCol[i]</td>
+                            <tr class="" >
+                                <td class="b bingo_cell @(i != 2 ? "extra-height" : string.Empty)">@Model.BCol[i]</td>
                                 <td class="i bingo_cell">@Model.ICol[i]</td>
                                 @if (Model.NCol[i] == 0)
                                 {
