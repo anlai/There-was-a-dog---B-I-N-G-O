@@ -275,11 +275,11 @@ function drawShapes(shape) {
 	            context.beginPath();
 	            context.arc(pos.x, pos.y, r, 0, 2 * Math.PI, false);
 	            // radial gradient
-	            var grd = context.createRadialGradient(pos.x - 15, pos.y - 15, 5, pos.x - 15, pos.y - 15, 30);
-	            grd.addColorStop(0, "#7efe1b"); // light green
-	            grd.addColorStop(1, "#459e00"); // dark green
-	            context.fillStyle = grd;
-	            context.fill();
+	            //var grd = context.createRadialGradient(pos.x - 15, pos.y - 15, 5, pos.x - 15, pos.y - 15, 30);
+	            //grd.addColorStop(0, "#7efe1b"); // light green
+	            //grd.addColorStop(1, "#459e00"); // dark green
+	            //context.fillStyle = grd;
+	            //context.fill();
 
 	            if (hasMickey) {
 	                var ear_r = shape.m_radius / 2;
