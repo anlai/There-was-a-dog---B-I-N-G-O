@@ -185,6 +185,7 @@
     <Content Include="Css\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\background.png" />
+    <Content Include="Images\bingo-title-white.jpg" />
     <Content Include="Images\bingo-title.jpg" />
     <Content Include="Images\bingo_logo.png" />
     <Content Include="Images\green-monsters.gif" />
